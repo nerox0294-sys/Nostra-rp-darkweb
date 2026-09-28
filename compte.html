@@ -39,11 +39,6 @@
     .back {
       color: #aaa;
       text-decoration: none;
-      font-size: 14px;
-    }
-
-    .back:hover {
-      color: white;
     }
 
     main {
@@ -51,14 +46,14 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 40px 20px;
+      padding: 30px 20px;
     }
 
     .account-box {
       width: 100%;
       max-width: 520px;
       background: #111;
-      border: 1px solid #242424;
+      border: 1px solid #444;
       border-radius: 16px;
       padding: 40px;
       text-align: center;
@@ -69,11 +64,11 @@
       height: 90px;
       margin: 0 auto 20px;
       border-radius: 50%;
-      background: #ff1e1e;
+      background: #d90000;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 38px;
+      font-size: 40px;
       font-weight: 900;
     }
 
@@ -92,18 +87,17 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(0,255,120,0.08);
-      border: 1px solid rgba(0,255,120,0.2);
+      background: rgba(0,255,100,0.08);
+      border: 1px solid rgba(0,255,100,0.4);
       color: #35e875;
-      padding: 8px 14px;
-      border-radius: 999px;
-      font-size: 13px;
+      padding: 8px 15px;
+      border-radius: 30px;
       margin-bottom: 30px;
     }
 
     .dot {
-      width: 8px;
-      height: 8px;
+      width: 9px;
+      height: 9px;
       background: #35e875;
       border-radius: 50%;
     }
@@ -116,8 +110,8 @@
 
     .btn {
       width: 100%;
-      padding: 14px;
-      border-radius: 9px;
+      padding: 16px;
+      border-radius: 10px;
       font-size: 15px;
       font-weight: 700;
       cursor: pointer;
@@ -126,30 +120,31 @@
     }
 
     .profile {
-      background: #ff1e1e;
+      background: #d90000;
       color: white;
     }
 
     .profile:hover {
-      background: #e51515;
+      background: #b80000;
     }
 
     .logout {
-      background: #1b1b1b;
-      color: #ff5555;
-      border: 1px solid #303030;
+      background: #444;
+      color: white;
     }
 
     .logout:hover {
-      background: #242424;
+      background: #555;
     }
 
     .home {
-      display: inline-block;
+      display: block;
       margin-top: 25px;
-      color: #777;
+      padding: 15px;
+      border: 1px solid #555;
+      border-radius: 10px;
+      color: #aaa;
       text-decoration: none;
-      font-size: 13px;
     }
 
     .home:hover {
@@ -157,7 +152,9 @@
     }
 
     #loading {
+      text-align: center;
       color: #aaa;
+      font-size: 18px;
     }
   </style>
 </head>
@@ -172,12 +169,16 @@
 <main>
 
   <div id="loading">
-    Chargement du compte...
+    Chargement...
   </div>
 
-  <div class="account-box" id="accountBox" style="display:none;">
+  <div
+    class="account-box"
+    id="accountBox"
+    style="display:none;"
+  >
 
-    <div class="avatar" id="avatar">N</div>
+    <div class="avatar" id="avatar">?</div>
 
     <h1 id="username">Utilisateur</h1>
 
@@ -192,15 +193,15 @@
 
       <a
         href="#"
-        class="btn profile"
         id="profileLink"
+        class="btn profile"
       >
         VOIR MON PROFIL PUBLIC
       </a>
 
       <button
-        class="btn logout"
         id="logoutBtn"
+        class="btn logout"
       >
         SE DÉCONNECTER
       </button>
@@ -208,7 +209,7 @@
     </div>
 
     <a href="index.html" class="home">
-      ← Retour à l'accueil
+      ← RETOUR À L'ACCUEIL
     </a>
 
   </div>
@@ -229,26 +230,17 @@
 
 
   const firebaseConfig = {
-
     apiKey: "AIzaSyDhCfjm-w29Ie1LUxhsMqUfEqBn1n7jY6Go",
-
     authDomain: "nostra-9cb24.firebaseapp.com",
-
     projectId: "nostra-9cb24",
-
     storageBucket: "nostra-9cb24.firebasestorage.app",
-
     messagingSenderId: "681107105816",
-
     appId: "1:681107105816:web:b6a393594780d021e3bb6d",
-
     measurementId: "G-7ZPRB7P5PL"
-
   };
 
 
   const app = initializeApp(firebaseConfig);
-
   const auth = getAuth(app);
 
 
@@ -258,14 +250,14 @@
   const accountBox =
     document.getElementById("accountBox");
 
+  const avatar =
+    document.getElementById("avatar");
+
   const username =
     document.getElementById("username");
 
   const email =
     document.getElementById("email");
-
-  const avatar =
-    document.getElementById("avatar");
 
   const profileLink =
     document.getElementById("profileLink");
@@ -276,54 +268,53 @@
 
   onAuthStateChanged(auth, (user) => {
 
-    if (user) {
+    if (!user) {
 
-      const pseudo =
-        user.displayName || "Utilisateur";
-
-
-      username.textContent =
-        pseudo;
-
-      email.textContent =
-        user.email || "";
-
-      avatar.textContent =
-        pseudo.charAt(0).toUpperCase();
-
-
-      profileLink.href =
-        "profil.html?uid=" +
-        encodeURIComponent(user.uid);
-
-
-      loading.style.display =
-        "none";
-
-      accountBox.style.display =
-        "block";
-
-    } else {
-
-      loading.textContent =
-        "Vous n'êtes pas connecté.";
-
-      setTimeout(() => {
-        window.location.href =
-          "connexion.html";
-      }, 1500);
+      window.location.href = "connexion.html";
+      return;
 
     }
+
+
+    const pseudo =
+      user.displayName || "Utilisateur";
+
+
+    username.textContent = pseudo;
+
+    email.textContent =
+      user.email || "";
+
+    avatar.textContent =
+      pseudo.charAt(0).toUpperCase();
+
+
+    profileLink.href =
+      "profil.html?uid=" +
+      encodeURIComponent(user.uid);
+
+
+    loading.style.display = "none";
+
+    accountBox.style.display = "block";
 
   });
 
 
   logoutBtn.addEventListener("click", async () => {
 
-    await signOut(auth);
+    try {
 
-    window.location.href =
-      "index.html";
+      await signOut(auth);
+
+      window.location.href =
+        "index.html";
+
+    } catch (error) {
+
+      console.error(error);
+
+    }
 
   });
 
