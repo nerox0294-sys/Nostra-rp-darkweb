@@ -1,321 +1,386 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Connexion - Nostra</title>
+  <title>Connexion - Nostra</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        body {
-            min-height: 100vh;
-            background: #080808;
-            color: white;
-            font-family: Arial, Helvetica, sans-serif;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0b0b0b;
+      color: white;
+      min-height: 100vh;
 
-        .container {
-            width: 100%;
-            max-width: 430px;
-        }
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
-        .logo {
-            text-align: center;
-            font-size: 42px;
-            font-weight: 900;
-            letter-spacing: 8px;
-            color: #e50914;
-            margin-bottom: 35px;
-        }
+      padding: 20px;
+    }
 
-        .card {
-            background: #111;
-            border: 1px solid #242424;
-            border-radius: 14px;
-            padding: 35px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
-        }
+    .box {
+      width: 100%;
+      max-width: 420px;
 
-        h1 {
-            text-align: center;
-            font-size: 28px;
-            margin-bottom: 10px;
-        }
+      background: #111;
+      border: 1px solid #242424;
+      border-radius: 16px;
 
-        .subtitle {
-            text-align: center;
-            color: #999;
-            margin-bottom: 30px;
-        }
+      padding: 40px;
+    }
 
-        .form-group {
-            margin-bottom: 20px;
-        }
+    .logo {
+      text-align: center;
 
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-        }
+      color: #ff1e1e;
 
-        input {
-            width: 100%;
-            padding: 14px;
-            background: #080808;
-            border: 1px solid #333;
-            border-radius: 8px;
-            color: white;
-            font-size: 15px;
-            outline: none;
-        }
+      font-size: 30px;
+      font-weight: 900;
 
-        input:focus {
-            border-color: #e50914;
-        }
+      letter-spacing: 2px;
 
-        button {
-            width: 100%;
-            padding: 15px;
-            background: #e50914;
-            border: none;
-            border-radius: 8px;
-            color: white;
-            font-size: 15px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.2s;
-        }
+      margin-bottom: 30px;
+    }
 
-        button:hover {
-            background: #ff1a25;
-        }
+    h1 {
+      text-align: center;
+      font-size: 25px;
+      margin-bottom: 30px;
+    }
 
-        button:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-        }
+    label {
+      display: block;
 
-        #message {
-            margin-top: 18px;
-            text-align: center;
-            font-size: 14px;
-            min-height: 20px;
-        }
+      color: #aaa;
 
-        .links {
-            text-align: center;
-            margin-top: 25px;
-            color: #999;
-            font-size: 14px;
-        }
+      font-size: 13px;
 
-        .links a {
-            color: #e50914;
-            text-decoration: none;
-        }
+      margin-bottom: 8px;
+    }
 
-        .links a:hover {
-            text-decoration: underline;
-        }
+    input {
+      width: 100%;
 
-        .back {
-            display: block;
-            text-align: center;
-            margin-top: 25px;
-            color: #777;
-            text-decoration: none;
-            font-size: 14px;
-        }
+      padding: 14px;
 
-        .back:hover {
-            color: white;
-        }
+      background: #181818;
 
-        @media (max-width: 500px) {
-            .card {
-                padding: 25px;
-            }
+      border: 1px solid #303030;
+      border-radius: 8px;
 
-            .logo {
-                font-size: 34px;
-            }
-        }
-    </style>
+      color: white;
+
+      outline: none;
+
+      margin-bottom: 18px;
+
+      font-size: 14px;
+    }
+
+    input:focus {
+      border-color: #ff1e1e;
+    }
+
+    button {
+      width: 100%;
+
+      padding: 14px;
+
+      background: #ff1e1e;
+
+      color: white;
+
+      border: none;
+      border-radius: 8px;
+
+      font-size: 15px;
+      font-weight: 700;
+
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #e51515;
+    }
+
+    .error {
+      margin-top: 15px;
+
+      color: #ff5555;
+
+      font-size: 13px;
+
+      text-align: center;
+
+      line-height: 1.5;
+    }
+
+    .bottom {
+      margin-top: 25px;
+
+      text-align: center;
+
+      color: #777;
+
+      font-size: 13px;
+    }
+
+    .bottom a {
+      color: #ff1e1e;
+
+      text-decoration: none;
+    }
+
+    .home {
+      display: block;
+
+      margin-top: 20px;
+
+      text-align: center;
+
+      color: #777;
+
+      text-decoration: none;
+
+      font-size: 13px;
+    }
+
+    .home:hover {
+      color: white;
+    }
+  </style>
 </head>
 
 <body>
 
-    <div class="container">
+  <div class="box">
 
-        <div class="logo">
-            NOSTRA
-        </div>
+    <div class="logo">
+      NOSTRA
+    </div>
 
-        <div class="card">
+    <h1>
+      Se connecter à son compte
+    </h1>
 
-            <h1>Connexion</h1>
 
-            <p class="subtitle">
-                Connecte-toi à ton compte Nostra
-            </p>
+    <form id="loginForm">
 
-            <form id="loginForm">
+      <label for="email">
+        Adresse e-mail
+      </label>
 
-                <div class="form-group">
-                    <label for="email">Adresse e-mail</label>
+      <input
+        type="email"
+        id="email"
+        placeholder="ton@email.com"
+        required
+      >
 
-                    <input
-                        type="email"
-                        id="email"
-                        placeholder="ton@email.com"
-                        required
-                    >
-                </div>
 
-                <div class="form-group">
-                    <label for="password">Mot de passe</label>
+      <label for="password">
+        Mot de passe
+      </label>
 
-                    <input
-                        type="password"
-                        id="password"
-                        placeholder="Ton mot de passe"
-                        required
-                    >
-                </div>
+      <input
+        type="password"
+        id="password"
+        placeholder="Ton mot de passe"
+        required
+      >
 
-                <button type="submit" id="loginButton">
-                    SE CONNECTER
-                </button>
 
-            </form>
+      <button type="submit">
+        SE CONNECTER
+      </button>
 
-            <div id="message"></div>
+    </form>
 
-            <div class="links">
-                Pas encore de compte ?
-                <a href="inscription.html">Créer un compte</a>
-            </div>
 
-            <a href="index.html" class="back">
-                ← Retour à Nostra
-            </a>
+    <div
+      id="error"
+      class="error"
+    ></div>
 
-        </div>
+
+    <div class="bottom">
+
+      Pas encore de compte ?
+
+      <a href="inscription.html">
+        Créer un compte
+      </a>
 
     </div>
 
 
-    <script type="module">
+    <a
+      href="index.html"
+      class="home"
+    >
+      ← Retour à l'accueil
+    </a>
 
-        import {
-            initializeApp
-        } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
-
-        import {
-            getAuth,
-            signInWithEmailAndPassword
-        } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
+  </div>
 
 
-        const firebaseConfig = {
-            apiKey: "AIzaSyDhCfjm-w29Ie1LUxhsMqUfEqB1n7jY6Go",
-            authDomain: "nostra-9cb24.firebaseapp.com",
-            projectId: "nostra-9cb24",
-            storageBucket: "nostra-9cb24.firebasestorage.app",
-            messagingSenderId: "681107105816",
-            appId: "1:681107105816:web:b6a393594780d021e3bb6d",
-            measurementId: "G-7ZPRB7P5PL"
-        };
+  <script type="module">
+
+    import {
+      initializeApp
+    } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
 
 
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
+    import {
+      getAuth,
+      setPersistence,
+      browserLocalPersistence,
+      signInWithEmailAndPassword
+    } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
 
 
-        const form = document.getElementById("loginForm");
-        const emailInput = document.getElementById("email");
-        const passwordInput = document.getElementById("password");
-        const button = document.getElementById("loginButton");
-        const message = document.getElementById("message");
+    const firebaseConfig = {
+
+      apiKey: "AIzaSyDhCfjm-w29Ie1LUxhsMqUfBn1n7jY6Go",
+
+      authDomain:
+        "nostra-9cb24.firebaseapp.com",
+
+      projectId:
+        "nostra-9cb24",
+
+      storageBucket:
+        "nostra-9cb24.firebasestorage.app",
+
+      messagingSenderId:
+        "681107105816",
+
+      appId:
+        "1:681107105816:web:b6a393594780d021e3bb6d",
+
+      measurementId:
+        "G-7ZPRB7P5PL"
+
+    };
 
 
-        form.addEventListener("submit", async (event) => {
-
-            event.preventDefault();
-
-            const email = emailInput.value.trim();
-            const password = passwordInput.value;
-
-            message.textContent = "";
-            button.disabled = true;
-            button.textContent = "CONNEXION...";
+    const app =
+      initializeApp(firebaseConfig);
 
 
-            try {
-
-                const userCredential =
-                    await signInWithEmailAndPassword(
-                        auth,
-                        email,
-                        password
-                    );
-
-                const user = userCredential.user;
-
-                console.log("Utilisateur connecté :", user);
-
-                message.textContent = "Connexion réussie !";
-                message.style.color = "#35d06f";
-
-                setTimeout(() => {
-                    window.location.href = "index.html";
-                }, 1000);
+    const auth =
+      getAuth(app);
 
 
-            } catch (error) {
+    const form =
+      document.getElementById("loginForm");
 
-                console.error(error);
 
-                message.style.color = "#ff4d4d";
+    const error =
+      document.getElementById("error");
 
-                if (error.code === "auth/invalid-email") {
 
-                    message.textContent =
-                        "L'adresse e-mail n'est pas valide.";
+    /*
+      On demande à Firebase de conserver
+      la connexion dans le navigateur.
+    */
 
-                } else if (error.code === "auth/invalid-credential") {
+    await setPersistence(
+      auth,
+      browserLocalPersistence
+    );
 
-                    message.textContent =
-                        "E-mail ou mot de passe incorrect.";
 
-                } else if (error.code === "auth/user-disabled") {
+    form.addEventListener(
+      "submit",
+      async (event) => {
 
-                    message.textContent =
-                        "Ce compte a été désactivé.";
+        event.preventDefault();
 
-                } else {
 
-                    message.textContent =
-                        "Impossible de se connecter. Réessaie.";
-                }
+        error.textContent = "";
 
-                button.disabled = false;
-                button.textContent = "SE CONNECTER";
-            }
 
-        });
+        const email =
+          document.getElementById("email")
+          .value
+          .trim();
 
-    </script>
+
+        const password =
+          document.getElementById("password")
+          .value;
+
+
+        try {
+
+          await signInWithEmailAndPassword(
+            auth,
+            email,
+            password
+          );
+
+
+          window.location.href =
+            "index.html";
+
+
+        } catch (err) {
+
+          console.error(err);
+
+
+          if (
+            err.code ===
+            "auth/invalid-email"
+          ) {
+
+            error.textContent =
+              "Adresse e-mail invalide.";
+
+          }
+
+          else if (
+            err.code ===
+            "auth/invalid-credential"
+          ) {
+
+            error.textContent =
+              "E-mail ou mot de passe incorrect.";
+
+          }
+
+          else if (
+            err.code ===
+            "auth/user-disabled"
+          ) {
+
+            error.textContent =
+              "Ce compte a été désactivé.";
+
+          }
+
+          else {
+
+            error.textContent =
+              "Une erreur est survenue. Réessaie.";
+
+          }
+
+        }
+
+      }
+    );
+
+  </script>
 
 </body>
 </html>
