@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Nostra RP</title>
+<title>Nostra — Serveur Roleplay</title>
 
 <style>
+
 * {
     margin: 0;
     padding: 0;
@@ -18,19 +20,20 @@ html {
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial, sans-serif;
     background: #050505;
     color: white;
 }
 
 /* =========================
-   NAVIGATION
+   HEADER
 ========================= */
 
 header {
     position: fixed;
     top: 0;
     left: 0;
+
     width: 100%;
     height: 80px;
 
@@ -40,30 +43,38 @@ header {
 
     padding: 0 6%;
 
-    background: rgba(5, 5, 5, 0.88);
-    backdrop-filter: blur(12px);
+    background: rgba(5, 5, 5, 0.92);
 
-    border-bottom: 1px solid rgba(255,255,255,0.08);
+    border-bottom: 1px solid #222;
 
     z-index: 1000;
+
+    backdrop-filter: blur(10px);
 }
 
 .logo {
     color: #e50914;
-    font-size: 26px;
+
+    font-size: 28px;
+
     font-weight: 900;
+
     letter-spacing: 6px;
 }
 
 nav {
     display: flex;
-    gap: 32px;
+
+    gap: 30px;
 }
 
 nav a {
     color: #aaa;
+
     text-decoration: none;
+
     font-size: 14px;
+
     transition: 0.3s;
 }
 
@@ -71,23 +82,22 @@ nav a:hover {
     color: white;
 }
 
-/* =========================
-   BOUTONS
-========================= */
+.header-buttons {
+    display: flex;
+
+    gap: 10px;
+}
 
 .btn {
-    display: inline-block;
-
-    padding: 12px 20px;
+    padding: 11px 18px;
 
     border-radius: 5px;
 
-    font-weight: bold;
-    font-size: 14px;
-
     text-decoration: none;
 
-    cursor: pointer;
+    font-size: 13px;
+
+    font-weight: bold;
 
     transition: 0.3s;
 }
@@ -95,35 +105,23 @@ nav a:hover {
 .btn-outline {
     color: white;
 
-    background: transparent;
-
     border: 1px solid #444;
 }
 
 .btn-outline:hover {
-    border-color: white;
-    transform: translateY(-2px);
+    background: #151515;
 }
 
 .btn-red {
     color: white;
 
     background: #d90416;
-
-    border: 1px solid #d90416;
 }
 
 .btn-red:hover {
     background: #ff1025;
-    border-color: #ff1025;
-
-    transform: translateY(-2px);
 }
 
-.nav-buttons {
-    display: flex;
-    gap: 10px;
-}
 
 /* =========================
    HERO
@@ -138,45 +136,45 @@ nav a:hover {
     padding: 120px 8% 80px;
 
     position: relative;
+
     overflow: hidden;
 
     background:
         radial-gradient(
-            circle at 80% 40%,
-            rgba(150,0,0,0.35),
+            circle at 75% 35%,
+            rgba(130, 0, 0, 0.35),
             transparent 35%
         ),
-
-        linear-gradient(
-            120deg,
-            #050505 20%,
-            #150000 60%,
-            #050505
-        );
+        radial-gradient(
+            circle at 20% 80%,
+            rgba(90, 0, 0, 0.25),
+            transparent 35%
+        ),
+        #050505;
 }
 
-.hero::after {
+.hero::before {
     content: "";
 
     position: absolute;
 
-    width: 500px;
-    height: 500px;
+    width: 600px;
+    height: 600px;
 
     right: -200px;
     top: 100px;
 
-    background: #b00000;
+    background: #8b0000;
 
     filter: blur(180px);
 
-    opacity: 0.25;
+    opacity: 0.18;
 }
 
 .hero-content {
-    max-width: 750px;
-
     position: relative;
+
+    max-width: 850px;
 
     z-index: 2;
 }
@@ -184,45 +182,47 @@ nav a:hover {
 .tag {
     color: #e50914;
 
-    font-size: 13px;
+    font-size: 14px;
 
     font-weight: bold;
 
-    letter-spacing: 5px;
+    letter-spacing: 4px;
 
     margin-bottom: 20px;
 }
 
-h1 {
+.hero h1 {
     font-size: clamp(70px, 13vw, 170px);
 
     line-height: 0.85;
 
-    letter-spacing: 12px;
-
     font-weight: 900;
+
+    letter-spacing: -5px;
+
+    margin-bottom: 30px;
 }
 
-.subtitle {
-    margin-top: 30px;
-
-    font-size: 25px;
-
-    font-weight: bold;
-
-    letter-spacing: 2px;
+.hero h1 span {
+    color: #e50914;
 }
 
-.description {
-    max-width: 600px;
+.hero h2 {
+    font-size: clamp(22px, 3vw, 38px);
 
-    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    max-width: 650px;
 
     color: #999;
 
     font-size: 17px;
 
     line-height: 1.7;
+
+    margin-bottom: 35px;
 }
 
 .hero-buttons {
@@ -230,48 +230,183 @@ h1 {
 
     gap: 15px;
 
-    margin-top: 35px;
+    flex-wrap: wrap;
 }
+
+.hero-button {
+    padding: 15px 25px;
+
+    border-radius: 5px;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+    font-size: 14px;
+
+    transition: 0.3s;
+}
+
+.hero-primary {
+    background: #d90416;
+
+    color: white;
+}
+
+.hero-primary:hover {
+    background: #ff1025;
+
+    transform: translateY(-2px);
+}
+
+.hero-secondary {
+    border: 1px solid #444;
+
+    color: white;
+}
+
+.hero-secondary:hover {
+    background: #151515;
+}
+
 
 /* =========================
    FEATURES
 ========================= */
 
 .features {
-    display: grid;
-
-    grid-template-columns: repeat(4, 1fr);
-
-    gap: 1px;
-
-    background: #222;
-}
-
-.feature {
-    padding: 40px 30px;
+    padding: 100px 8%;
 
     background: #080808;
+}
+
+.section-title {
+    text-align: center;
+
+    margin-bottom: 60px;
+}
+
+.section-title span {
+    color: #e50914;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    letter-spacing: 3px;
+}
+
+.section-title h2 {
+    font-size: 40px;
+
+    margin-top: 10px;
+}
+
+.cards {
+    max-width: 1200px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 20px;
+}
+
+.card {
+    padding: 30px;
+
+    background: #101010;
+
+    border: 1px solid #242424;
+
+    border-radius: 8px;
 
     transition: 0.3s;
 }
 
-.feature:hover {
-    background: #120000;
+.card:hover {
+    transform: translateY(-5px);
+
+    border-color: #7a0000;
 }
 
-.feature h3 {
+.card-number {
+    color: #e50914;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    margin-bottom: 20px;
+}
+
+.card h3 {
     margin-bottom: 12px;
-
-    font-size: 17px;
 }
 
-.feature p {
-    color: #777;
-
-    font-size: 14px;
+.card p {
+    color: #888;
 
     line-height: 1.6;
+
+    font-size: 14px;
 }
+
+
+/* =========================
+   ABOUT
+========================= */
+
+.about {
+    padding: 100px 8%;
+
+    background: #050505;
+}
+
+.about-content {
+    max-width: 1000px;
+
+    margin: auto;
+
+    text-align: center;
+}
+
+.about-content h2 {
+    font-size: 40px;
+
+    margin-bottom: 20px;
+}
+
+.about-content p {
+    color: #999;
+
+    line-height: 1.8;
+
+    font-size: 16px;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    padding: 40px 8%;
+
+    border-top: 1px solid #222;
+
+    background: #050505;
+
+    text-align: center;
+
+    color: #555;
+
+    font-size: 13px;
+}
+
 
 /* =========================
    MOBILE
@@ -283,45 +418,61 @@ h1 {
         display: none;
     }
 
-    .nav-buttons {
-        display: none;
+    .cards {
+        grid-template-columns:
+            repeat(2, 1fr);
     }
 
-    .features {
-        grid-template-columns: 1fr 1fr;
-    }
 }
 
 @media (max-width: 600px) {
 
+    header {
+        padding: 0 5%;
+    }
+
+    .header-buttons {
+        gap: 5px;
+    }
+
+    .btn {
+        padding: 9px 12px;
+
+        font-size: 11px;
+    }
+
     .hero {
-        padding: 120px 25px 70px;
+        padding-left: 6%;
+
+        padding-right: 6%;
     }
 
-    h1 {
-        font-size: 70px;
-        letter-spacing: 5px;
+    .hero h1 {
+        font-size: 75px;
+
+        letter-spacing: -3px;
     }
 
-    .subtitle {
-        font-size: 19px;
-    }
-
-    .features {
+    .cards {
         grid-template-columns: 1fr;
     }
 
-    .hero-buttons {
-        flex-direction: column;
+    .section-title h2,
+    .about-content h2 {
+        font-size: 32px;
     }
+
 }
+
 </style>
+
 </head>
 
 <body>
 
+
 <!-- =========================
-     NAVIGATION
+     HEADER
 ========================= -->
 
 <header>
@@ -332,15 +483,11 @@ h1 {
 
     <nav>
 
-        <a href="index.html">
-            Accueil
-        </a>
-
         <a href="#about">
             À propos
         </a>
 
-        <a href="#rules">
+        <a href="regles.html">
             Règles
         </a>
 
@@ -350,7 +497,7 @@ h1 {
 
     </nav>
 
-    <div class="nav-buttons">
+    <div class="header-buttons">
 
         <a
             href="connexion.html"
@@ -372,7 +519,7 @@ h1 {
 
 
 <!-- =========================
-     ACCUEIL
+     HERO
 ========================= -->
 
 <section class="hero">
@@ -384,35 +531,31 @@ h1 {
         </div>
 
         <h1>
-            NOSTRA
+            NOST<span>R</span>A
         </h1>
 
-        <div class="subtitle">
+        <h2>
             TON SERVEUR RP, TON HISTOIRE.
-        </div>
+        </h2>
 
-        <p class="description">
-
-            Bienvenue sur Nostra.
-
-            Crée ton personnage, rencontre d'autres joueurs
-            et écris ton propre scénario dans un univers
-            roleplay vivant et immersif.
-
+        <p>
+            Plonge dans un univers Roleplay où chaque décision
+            peut changer ton histoire. Crée ton personnage,
+            rejoins la communauté et écris ton propre scénario.
         </p>
 
         <div class="hero-buttons">
 
             <a
                 href="inscription.html"
-                class="btn btn-red"
+                class="hero-button hero-primary"
             >
                 COMMENCER →
             </a>
 
             <a
                 href="#about"
-                class="btn btn-outline"
+                class="hero-button hero-secondary"
             >
                 DÉCOUVRIR NOSTRA
             </a>
@@ -425,70 +568,168 @@ h1 {
 
 
 <!-- =========================
-     PRÉSENTATION
+     FEATURES
+========================= -->
+
+<section class="features">
+
+    <div class="section-title">
+
+        <span>
+            L'EXPÉRIENCE NOSTRA
+        </span>
+
+        <h2>
+            Un univers. Ton histoire.
+        </h2>
+
+    </div>
+
+
+    <div class="cards">
+
+
+        <div class="card">
+
+            <div class="card-number">
+                01
+            </div>
+
+            <h3>
+                Roleplay
+            </h3>
+
+            <p>
+                Plonge dans un univers immersif où
+                chaque joueur écrit sa propre histoire.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-number">
+                02
+            </div>
+
+            <h3>
+                Communauté
+            </h3>
+
+            <p>
+                Rejoins une communauté de joueurs
+                passionnés par le Roleplay.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-number">
+                03
+            </div>
+
+            <h3>
+                Liberté
+            </h3>
+
+            <p>
+                Fais tes choix, construis ton personnage
+                et développe ta propre histoire.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-number">
+                04
+            </div>
+
+            <h3>
+                Événements
+            </h3>
+
+            <p>
+                Participe à des événements et
+                situations uniques organisés sur Nostra.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     ABOUT
 ========================= -->
 
 <section
-    class="features"
+    class="about"
     id="about"
 >
 
-    <div class="feature">
+    <div class="about-content">
 
-        <h3>
-            Une communauté active
-        </h3>
-
-        <p>
-            Rejoins des joueurs passionnés
-            par le roleplay.
-        </p>
-
-    </div>
-
-
-    <div class="feature">
-
-        <h3>
-            Un RP immersif
-        </h3>
+        <h2>
+            À propos de Nostra
+        </h2>
 
         <p>
-            Développe ton personnage
-            et construis ton histoire.
-        </p>
-
-    </div>
-
-
-    <div class="feature">
-
-        <h3>
-            Des possibilités infinies
-        </h3>
-
-        <p>
-            Métiers, entreprises,
-            organisations et bien plus.
-        </p>
-
-    </div>
-
-
-    <div class="feature">
-
-        <h3>
-            Un staff à l'écoute
-        </h3>
-
-        <p>
-            Une équipe présente pour
-            accompagner les joueurs.
+            Nostra est un serveur Roleplay pensé pour créer
+            une expérience immersive et communautaire.
+            Chaque joueur peut développer son personnage,
+            rencontrer d'autres joueurs et construire
+            sa propre histoire dans l'univers du serveur.
         </p>
 
     </div>
 
 </section>
 
+
+<!-- =========================
+     CONTACT
+========================= -->
+
+<section
+    class="about"
+    id="contact"
+>
+
+    <div class="about-content">
+
+        <h2>
+            Contact
+        </h2>
+
+        <p>
+            Une question ou un problème ?
+            Les informations de contact de Nostra
+            seront bientôt disponibles ici.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    NOSTRA — Serveur Roleplay
+
+</footer>
+
+
 </body>
+
 </html>
