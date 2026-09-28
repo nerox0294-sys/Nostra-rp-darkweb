@@ -8,213 +8,193 @@
 
   <style>
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
+      font-family: Arial, sans-serif;
     }
 
     body {
       min-height: 100vh;
-      font-family: Arial, Helvetica, sans-serif;
       background:
-        radial-gradient(circle at top, #260606 0%, #080808 45%),
-        #080808;
+        radial-gradient(circle at top, #251010 0%, #0b0b0b 45%);
       color: white;
-      display: flex;
-      flex-direction: column;
-    }
-
-    header {
-      height: 75px;
-      border-bottom: 1px solid #222;
-      background: rgba(8, 8, 8, 0.95);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 7%;
-    }
-
-    .logo {
-      color: #e50914;
-      text-decoration: none;
-      font-size: 27px;
-      font-weight: 900;
-      letter-spacing: 3px;
-    }
-
-    .back {
-      color: #aaa;
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: bold;
-    }
-
-    .back:hover {
-      color: white;
-    }
-
-    main {
-      flex: 1;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 70px 20px;
+      padding: 20px;
     }
 
-    .profile-card {
+    .container {
       width: 100%;
-      max-width: 650px;
-      background: #101010;
-      border: 1px solid #292929;
-      border-radius: 15px;
-      padding: 45px;
+      max-width: 520px;
+      background: rgba(21, 21, 21, 0.96);
+      border: 1px solid #2d2d2d;
+      border-radius: 18px;
+      padding: 40px 30px;
       text-align: center;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+    }
+
+    .logo {
+      color: #ff2b2b;
+      font-size: 30px;
+      font-weight: 900;
+      letter-spacing: 4px;
+      margin-bottom: 35px;
     }
 
     .avatar {
       width: 110px;
       height: 110px;
-      margin: 0 auto 25px;
+      margin: 0 auto 20px;
       border-radius: 50%;
-      background: #e50914;
+      background: linear-gradient(135deg, #ff2b2b, #9e1111);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 45px;
+      font-size: 44px;
       font-weight: 900;
-      box-shadow: 0 0 35px rgba(229, 9, 20, 0.25);
+      box-shadow: 0 0 30px rgba(255, 43, 43, 0.25);
     }
 
-    .pseudo {
-      font-size: 35px;
-      font-weight: 900;
-      margin-bottom: 12px;
+    .username {
+      font-size: 30px;
+      font-weight: 800;
+      margin-bottom: 10px;
+      word-break: break-word;
     }
 
-    .status {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      color: #4ade80;
+    .member {
+      color: #ff4b4b;
       font-size: 14px;
       font-weight: bold;
-      margin-bottom: 35px;
-    }
-
-    .status-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #4ade80;
+      margin-bottom: 30px;
     }
 
     .info {
-      border-top: 1px solid #252525;
-      padding-top: 25px;
-      display: grid;
-      gap: 15px;
-    }
-
-    .info-box {
-      background: #151515;
-      border: 1px solid #222;
-      border-radius: 8px;
-      padding: 17px;
+      background: #101010;
+      border: 1px solid #292929;
+      border-radius: 12px;
+      padding: 18px;
       text-align: left;
+      margin-bottom: 25px;
     }
 
-    .info-label {
+    .info-title {
       color: #777;
-      font-size: 11px;
+      font-size: 12px;
       text-transform: uppercase;
       letter-spacing: 1px;
-      margin-bottom: 6px;
+      margin-bottom: 7px;
     }
 
     .info-value {
       color: #ddd;
       font-size: 15px;
+      word-break: break-all;
+    }
+
+    .back {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      border-radius: 8px;
+      border: 1px solid #292929;
+      color: #aaa;
+      text-decoration: none;
       font-weight: bold;
+      font-size: 14px;
+    }
+
+    .back:hover {
+      color: white;
+      border-color: #444;
+      background: #1c1c1c;
     }
 
     .loading {
-      color: #999;
-      font-size: 16px;
+      color: #888;
+      font-size: 15px;
     }
 
     .error {
-      color: #ff4d57;
-      line-height: 1.6;
+      color: #ff6464;
+      background: #321414;
+      border: 1px solid #682222;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 20px;
     }
 
-    footer {
-      border-top: 1px solid #222;
-      padding: 25px;
-      text-align: center;
-      color: #666;
-      font-size: 13px;
-    }
-
-    footer strong {
-      color: #e50914;
-    }
-
-    @media (max-width: 600px) {
-      header {
-        padding: 0 20px;
-      }
-
-      .back {
-        font-size: 12px;
-      }
-
-      .profile-card {
-        padding: 30px 20px;
-      }
-
-      .pseudo {
-        font-size: 28px;
-      }
-
-      .avatar {
-        width: 90px;
-        height: 90px;
-        font-size: 36px;
-      }
+    .hidden {
+      display: none;
     }
   </style>
 </head>
 
 <body>
 
-  <header>
-    <a href="index.html" class="logo">NOSTRA</a>
-    <a href="index.html" class="back">← Accueil</a>
-  </header>
+  <div class="container">
 
+    <div class="logo">NOSTRA</div>
 
-  <main>
+    <div id="loading" class="loading">
+      Chargement du profil...
+    </div>
 
-    <div class="profile-card" id="profileCard">
+    <div id="profile" class="hidden">
 
-      <div class="loading">
-        Chargement du profil...
+      <div class="avatar" id="avatar">
+        ?
       </div>
+
+      <div class="username" id="username">
+        —
+      </div>
+
+      <div class="member">
+        ● MEMBRE NOSTRA
+      </div>
+
+      <div class="info">
+
+        <div class="info-title">
+          Identifiant public
+        </div>
+
+        <div class="info-value" id="userId">
+          —
+        </div>
+
+      </div>
+
+      <a href="index.html" class="back">
+        ← Retour à l'accueil
+      </a>
 
     </div>
 
-  </main>
+    <div id="error" class="hidden">
 
+      <div class="error" id="errorMessage">
+        Profil introuvable.
+      </div>
 
-  <footer>
-    © 2026 <strong>NOSTRA</strong> — Tous droits réservés.
-  </footer>
+      <a href="index.html" class="back">
+        ← Retour à l'accueil
+      </a>
+
+    </div>
+
+  </div>
 
 
   <script type="module">
 
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+    import {
+      initializeApp
+    } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
 
     import {
       getFirestore,
@@ -224,7 +204,7 @@
 
 
     const firebaseConfig = {
-      apiKey: "AIzaSyDhCfjm-w29Ie1LUxhsMqUfEqB1n7jY6Go",
+      apiKey: "AIzaSyDhCfjm-w29Ie1LUxhsMqUfEqBn1n7jY6Go",
       authDomain: "nostra-9cb24.firebaseapp.com",
       projectId: "nostra-9cb24",
       storageBucket: "nostra-9cb24.firebasestorage.app",
@@ -235,131 +215,108 @@
 
 
     const app = initializeApp(firebaseConfig);
-
     const db = getFirestore(app);
 
-    const profileCard = document.getElementById("profileCard");
+
+    const loading = document.getElementById("loading");
+    const profile = document.getElementById("profile");
+    const error = document.getElementById("error");
+
+    const avatar = document.getElementById("avatar");
+    const username = document.getElementById("username");
+    const userId = document.getElementById("userId");
+    const errorMessage = document.getElementById("errorMessage");
 
 
-    /* Récupère le UID dans l'URL */
-
-    const params = new URLSearchParams(window.location.search);
-
-    const uid = params.get("uid");
-
-
-    if (!uid) {
-
-      profileCard.innerHTML = `
-        <div class="error">
-          Ce profil n'existe pas ou l'adresse est incorrecte.
-        </div>
-      `;
-
-    } else {
-
-      loadProfile(uid);
-
+    function escapeHTML(value) {
+      return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
     }
 
 
-    async function loadProfile(userId) {
+    async function loadProfile() {
+
+      const params = new URLSearchParams(
+        window.location.search
+      );
+
+      const uid = params.get("uid");
+
+
+      if (!uid) {
+
+        loading.classList.add("hidden");
+        error.classList.remove("hidden");
+
+        errorMessage.textContent =
+          "Aucun profil n'a été indiqué.";
+
+        return;
+      }
+
 
       try {
 
-        const profileRef = doc(db, "profiles", userId);
+        const profileRef = doc(
+          db,
+          "profiles",
+          uid
+        );
 
-        const profileSnap = await getDoc(profileRef);
+        const profileSnapshot =
+          await getDoc(profileRef);
 
 
-        if (!profileSnap.exists()) {
+        if (!profileSnapshot.exists()) {
 
-          profileCard.innerHTML = `
-            <div class="error">
-              Ce profil Nostra n'existe pas.
-            </div>
-          `;
+          loading.classList.add("hidden");
+          error.classList.remove("hidden");
+
+          errorMessage.textContent =
+            "Ce profil n'existe pas.";
 
           return;
         }
 
 
-        const profile = profileSnap.data();
+        const data = profileSnapshot.data();
 
-        const pseudo = profile.pseudo || "Joueur";
-
-        const firstLetter = pseudo.charAt(0).toUpperCase();
-
-
-        profileCard.innerHTML = `
-
-          <div class="avatar">
-            ${firstLetter}
-          </div>
-
-          <div class="pseudo">
-            ${escapeHTML(pseudo)}
-          </div>
-
-          <div class="status">
-            <span class="status-dot"></span>
-            Membre Nostra
-          </div>
-
-          <div class="info">
-
-            <div class="info-box">
-              <div class="info-label">
-                Pseudo
-              </div>
-
-              <div class="info-value">
-                ${escapeHTML(pseudo)}
-              </div>
-            </div>
-
-            <div class="info-box">
-              <div class="info-label">
-                Identifiant public
-              </div>
-
-              <div class="info-value">
-                ${escapeHTML(userId)}
-              </div>
-            </div>
-
-          </div>
-
-        `;
+        const pseudo =
+          data.pseudo || "Membre Nostra";
 
 
-      } catch (error) {
+        username.textContent = pseudo;
 
-        console.error(error);
+        avatar.textContent =
+          pseudo.charAt(0).toUpperCase();
 
-        profileCard.innerHTML = `
-          <div class="error">
-            Impossible de charger ce profil pour le moment.
-          </div>
-        `;
+        userId.textContent = uid;
+
+
+        loading.classList.add("hidden");
+        profile.classList.remove("hidden");
+
+
+      } catch (err) {
+
+        console.error(err);
+
+        loading.classList.add("hidden");
+        error.classList.remove("hidden");
+
+        errorMessage.textContent =
+          "Impossible de charger ce profil.";
 
       }
 
     }
 
 
-    /* Sécurité : empêche du HTML d'être injecté dans le pseudo */
-
-    function escapeHTML(text) {
-
-      return String(text)
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
-
-    }
+    loadProfile();
 
   </script>
 
