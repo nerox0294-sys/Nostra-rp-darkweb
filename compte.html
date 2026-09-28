@@ -40,7 +40,6 @@
       color: #aaa;
       text-decoration: none;
       font-size: 14px;
-      transition: 0.2s;
     }
 
     .back:hover {
@@ -62,22 +61,20 @@
       border: 1px solid #242424;
       border-radius: 16px;
       padding: 40px;
-      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.45);
       text-align: center;
     }
 
     .avatar {
       width: 90px;
       height: 90px;
+      margin: 0 auto 20px;
       border-radius: 50%;
       background: #ff1e1e;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 20px;
       font-size: 38px;
       font-weight: 900;
-      color: white;
     }
 
     h1 {
@@ -95,8 +92,8 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(0, 255, 120, 0.08);
-      border: 1px solid rgba(0, 255, 120, 0.2);
+      background: rgba(0,255,120,0.08);
+      border: 1px solid rgba(0,255,120,0.2);
       color: #35e875;
       padding: 8px 14px;
       border-radius: 999px;
@@ -119,39 +116,37 @@
 
     .btn {
       width: 100%;
-      padding: 14px 18px;
+      padding: 14px;
       border-radius: 9px;
-      border: none;
       font-size: 15px;
       font-weight: 700;
       cursor: pointer;
       text-decoration: none;
-      transition: 0.2s;
-      display: block;
+      border: none;
     }
 
-    .btn-profile {
+    .profile {
       background: #ff1e1e;
       color: white;
     }
 
-    .btn-profile:hover {
+    .profile:hover {
       background: #e51515;
     }
 
-    .btn-logout {
+    .logout {
       background: #1b1b1b;
       color: #ff5555;
       border: 1px solid #303030;
     }
 
-    .btn-logout:hover {
+    .logout:hover {
       background: #242424;
     }
 
     .home {
-      margin-top: 25px;
       display: inline-block;
+      margin-top: 25px;
       color: #777;
       text-decoration: none;
       font-size: 13px;
@@ -163,137 +158,176 @@
 
     #loading {
       color: #aaa;
-      font-size: 15px;
     }
   </style>
 </head>
 
 <body>
 
-  <header>
-    <div class="logo">NOSTRA</div>
-    <a href="index.html" class="back">← Accueil</a>
-  </header>
+<header>
+  <div class="logo">NOSTRA</div>
+  <a href="index.html" class="back">← Accueil</a>
+</header>
 
-  <main>
+<main>
 
-    <div id="loading">
-      Chargement du compte...
+  <div id="loading">
+    Chargement du compte...
+  </div>
+
+  <div class="account-box" id="accountBox" style="display:none;">
+
+    <div class="avatar" id="avatar">N</div>
+
+    <h1 id="username">Utilisateur</h1>
+
+    <div class="email" id="email"></div>
+
+    <div class="status">
+      <span class="dot"></span>
+      Connecté
     </div>
 
-    <div class="account-box" id="accountBox" style="display: none;">
+    <div class="buttons">
 
-      <div class="avatar" id="avatar">N</div>
-
-      <h1 id="username">Utilisateur</h1>
-
-      <div class="email" id="email"></div>
-
-      <div class="status">
-        <span class="dot"></span>
-        Connecté
-      </div>
-
-      <div class="buttons">
-
-        <a href="#" class="btn btn-profile" id="profileLink">
-          VOIR MON PROFIL PUBLIC
-        </a>
-
-        <button class="btn btn-logout" id="logoutBtn">
-          SE DÉCONNECTER
-        </button>
-
-      </div>
-
-      <a href="index.html" class="home">
-        ← Retour à l'accueil
+      <a
+        href="#"
+        class="btn profile"
+        id="profileLink"
+      >
+        VOIR MON PROFIL PUBLIC
       </a>
 
+      <button
+        class="btn logout"
+        id="logoutBtn"
+      >
+        SE DÉCONNECTER
+      </button>
+
     </div>
 
-  </main>
+    <a href="index.html" class="home">
+      ← Retour à l'accueil
+    </a>
 
-  <script type="module">
+  </div>
 
-    import { initializeApp }
-      from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
-
-    import {
-      getAuth,
-      onAuthStateChanged,
-      signOut
-    } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
+</main>
 
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyDhCfjm-w29Ie1LUxhsMqUfEqBn1n7jY6Go",
-      authDomain: "nostra-9cb24.firebaseapp.com",
-      projectId: "nostra-9cb24",
-      storageBucket: "nostra-9cb24.firebasestorage.app",
-      messagingSenderId: "681107105816",
-      appId: "1:681107105816:web:b6a393594780d021e3bb6d",
-      measurementId: "G-7ZPRB7P5PL"
-    };
+<script type="module">
+
+  import { initializeApp }
+    from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+
+  import {
+    getAuth,
+    onAuthStateChanged,
+    signOut
+  } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
 
 
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
+  const firebaseConfig = {
+
+    apiKey: "AIzaSyDhCfjm-w29Ie1LUxhsMqUfEqBn1n7jY6Go",
+
+    authDomain: "nostra-9cb24.firebaseapp.com",
+
+    projectId: "nostra-9cb24",
+
+    storageBucket: "nostra-9cb24.firebasestorage.app",
+
+    messagingSenderId: "681107105816",
+
+    appId: "1:681107105816:web:b6a393594780d021e3bb6d",
+
+    measurementId: "G-7ZPRB7P5PL"
+
+  };
 
 
-    const loading = document.getElementById("loading");
-    const accountBox = document.getElementById("accountBox");
-    const username = document.getElementById("username");
-    const email = document.getElementById("email");
-    const avatar = document.getElementById("avatar");
-    const profileLink = document.getElementById("profileLink");
-    const logoutBtn = document.getElementById("logoutBtn");
+  const app = initializeApp(firebaseConfig);
+
+  const auth = getAuth(app);
 
 
-    onAuthStateChanged(auth, (user) => {
+  const loading =
+    document.getElementById("loading");
 
-      if (!user) {
-        window.location.href = "connexion.html";
-        return;
-      }
+  const accountBox =
+    document.getElementById("accountBox");
+
+  const username =
+    document.getElementById("username");
+
+  const email =
+    document.getElementById("email");
+
+  const avatar =
+    document.getElementById("avatar");
+
+  const profileLink =
+    document.getElementById("profileLink");
+
+  const logoutBtn =
+    document.getElementById("logoutBtn");
 
 
-      const pseudo = user.displayName || "Utilisateur";
+  onAuthStateChanged(auth, (user) => {
+
+    if (user) {
+
+      const pseudo =
+        user.displayName || "Utilisateur";
 
 
-      username.textContent = pseudo;
-      email.textContent = user.email || "";
+      username.textContent =
+        pseudo;
 
-      avatar.textContent = pseudo.charAt(0).toUpperCase();
+      email.textContent =
+        user.email || "";
+
+      avatar.textContent =
+        pseudo.charAt(0).toUpperCase();
 
 
       profileLink.href =
-        `profil.html?uid=${encodeURIComponent(user.uid)}`;
+        "profil.html?uid=" +
+        encodeURIComponent(user.uid);
 
 
-      loading.style.display = "none";
-      accountBox.style.display = "block";
+      loading.style.display =
+        "none";
 
-    });
+      accountBox.style.display =
+        "block";
+
+    } else {
+
+      loading.textContent =
+        "Vous n'êtes pas connecté.";
+
+      setTimeout(() => {
+        window.location.href =
+          "connexion.html";
+      }, 1500);
+
+    }
+
+  });
 
 
-    logoutBtn.addEventListener("click", async () => {
+  logoutBtn.addEventListener("click", async () => {
 
-      try {
+    await signOut(auth);
 
-        await signOut(auth);
+    window.location.href =
+      "index.html";
 
-        window.location.href = "index.html";
+  });
 
-      } catch (error) {
-
-        console.error("Erreur de déconnexion :", error);
-
-      }
-
-    });
-
-  </script>
+</script>
 
 </body>
 </html>
