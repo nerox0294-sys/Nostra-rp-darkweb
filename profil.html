@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Profil — Nostra</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top, #260606 0%, #080808 45%),
+        #080808;
+      color: white;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      height: 75px;
+      border-bottom: 1px solid #222;
+      background: rgba(8, 8, 8, 0.95);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 7%;
+    }
+
+    .logo {
+      color: #e50914;
+      text-decoration: none;
+      font-size: 27px;
+      font-weight: 900;
+      letter-spacing: 3px;
+    }
+
+    .back {
+      color: #aaa;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .back:hover {
+      color: white;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 70px 20px;
+    }
+
+    .profile-card {
+      width: 100%;
+      max-width: 650px;
+      background: #101010;
+      border: 1px solid #292929;
+      border-radius: 15px;
+      padding: 45px;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+    }
+
+    .avatar {
+      width: 110px;
+      height: 110px;
+      margin: 0 auto 25px;
+      border-radius: 50%;
+      background: #e50914;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 45px;
+      font-weight: 900;
+      box-shadow: 0 0 35px rgba(229, 9, 20, 0.25);
+    }
+
+    .pseudo {
+      font-size: 35px;
+      font-weight: 900;
+      margin-bottom: 12px;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      color: #4ade80;
+      font-size: 14px;
+      font-weight: bold;
+      margin-bottom: 35px;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #4ade80;
+    }
+
+    .info {
+      border-top: 1px solid #252525;
+      padding-top: 25px;
+      display: grid;
+      gap: 15px;
+    }
+
+    .info-box {
+      background: #151515;
+      border: 1px solid #222;
+      border-radius: 8px;
+      padding: 17px;
+      text-align: left;
+    }
+
+    .info-label {
+      color: #777;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+
+    .info-value {
+      color: #ddd;
+      font-size: 15px;
+      font-weight: bold;
+    }
+
+    .loading {
+      color: #999;
+      font-size: 16px;
+    }
+
+    .error {
+      color: #ff4d57;
+      line-height: 1.6;
+    }
+
+    footer {
+      border-top: 1px solid #222;
+      padding: 25px;
+      text-align: center;
+      color: #666;
+      font-size: 13px;
+    }
+
+    footer strong {
+      color: #e50914;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        padding: 0 20px;
+      }
+
+      .back {
+        font-size: 12px;
+      }
+
+      .profile-card {
+        padding: 30px 20px;
+      }
+
+      .pseudo {
+        font-size: 28px;
+      }
+
+      .avatar {
+        width: 90px;
+        height: 90px;
+        font-size: 36px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <a href="index.html" class="logo">NOSTRA</a>
+    <a href="index.html" class="back">← Accueil</a>
+  </header>
+
+
+  <main>
+
+    <div class="profile-card" id="profileCard">
+
+      <div class="loading">
+        Chargement du profil...
+      </div>
+
+    </div>
+
+  </main>
+
+
+  <footer>
+    © 2026 <strong>NOSTRA</strong> — Tous droits réservés.
+  </footer>
+
+
+  <script type="module">
+
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+
+    import {
+      getFirestore,
+      doc,
+      getDoc
+    } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
+
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDhCfjm-w29Ie1LUxhsMqUfEqB1n7jY6Go",
+      authDomain: "nostra-9cb24.firebaseapp.com",
+      projectId: "nostra-9cb24",
+      storageBucket: "nostra-9cb24.firebasestorage.app",
+      messagingSenderId: "681107105816",
+      appId: "1:681107105816:web:b6a393594780d021e3bb6d",
+      measurementId: "G-7ZPRB7P5PL"
+    };
+
+
+    const app = initializeApp(firebaseConfig);
+
+    const db = getFirestore(app);
+
+    const profileCard = document.getElementById("profileCard");
+
+
+    /* Récupère le UID dans l'URL */
+
+    const params = new URLSearchParams(window.location.search);
+
+    const uid = params.get("uid");
+
+
+    if (!uid) {
+
+      profileCard.innerHTML = `
+        <div class="error">
+          Ce profil n'existe pas ou l'adresse est incorrecte.
+        </div>
+      `;
+
+    } else {
+
+      loadProfile(uid);
+
+    }
+
+
+    async function loadProfile(userId) {
+
+      try {
+
+        const profileRef = doc(db, "profiles", userId);
+
+        const profileSnap = await getDoc(profileRef);
+
+
+        if (!profileSnap.exists()) {
+
+          profileCard.innerHTML = `
+            <div class="error">
+              Ce profil Nostra n'existe pas.
+            </div>
+          `;
+
+          return;
+        }
+
+
+        const profile = profileSnap.data();
+
+        const pseudo = profile.pseudo || "Joueur";
+
+        const firstLetter = pseudo.charAt(0).toUpperCase();
+
+
+        profileCard.innerHTML = `
+
+          <div class="avatar">
+            ${firstLetter}
+          </div>
+
+          <div class="pseudo">
+            ${escapeHTML(pseudo)}
+          </div>
+
+          <div class="status">
+            <span class="status-dot"></span>
+            Membre Nostra
+          </div>
+
+          <div class="info">
+
+            <div class="info-box">
+              <div class="info-label">
+                Pseudo
+              </div>
+
+              <div class="info-value">
+                ${escapeHTML(pseudo)}
+              </div>
+            </div>
+
+            <div class="info-box">
+              <div class="info-label">
+                Identifiant public
+              </div>
+
+              <div class="info-value">
+                ${escapeHTML(userId)}
+              </div>
+            </div>
+
+          </div>
+
+        `;
+
+
+      } catch (error) {
+
+        console.error(error);
+
+        profileCard.innerHTML = `
+          <div class="error">
+            Impossible de charger ce profil pour le moment.
+          </div>
+        `;
+
+      }
+
+    }
+
+
+    /* Sécurité : empêche du HTML d'être injecté dans le pseudo */
+
+    function escapeHTML(text) {
+
+      return String(text)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+
+    }
+
+  </script>
+
+</body>
+</html>
