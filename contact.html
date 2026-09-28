@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Contact — Nostra</title>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #050505;
+    color: white;
+    min-height: 100vh;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+    height: 80px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 6%;
+
+    background: #050505;
+
+    border-bottom: 1px solid #222;
+}
+
+.logo {
+    color: #e50914;
+
+    font-size: 28px;
+
+    font-weight: 900;
+
+    letter-spacing: 6px;
+}
+
+.back {
+    color: #aaa;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    transition: 0.3s;
+}
+
+.back:hover {
+    color: white;
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+main {
+    min-height: calc(100vh - 160px);
+
+    padding: 120px 8%;
+
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            rgba(130, 0, 0, 0.25),
+            transparent 40%
+        ),
+        #050505;
+}
+
+.container {
+    max-width: 1100px;
+
+    margin: auto;
+}
+
+.title {
+    text-align: center;
+
+    margin-bottom: 70px;
+}
+
+.title span {
+    color: #e50914;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    letter-spacing: 4px;
+}
+
+.title h1 {
+    font-size: 55px;
+
+    margin-top: 15px;
+}
+
+.title p {
+    color: #888;
+
+    margin-top: 15px;
+
+    font-size: 16px;
+}
+
+
+/* =========================
+   CONTACT CARDS
+========================= */
+
+.cards {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 25px;
+}
+
+.card {
+    padding: 35px;
+
+    background: #101010;
+
+    border: 1px solid #242424;
+
+    border-radius: 8px;
+
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+
+    border-color: #7a0000;
+}
+
+.card-number {
+    color: #e50914;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    margin-bottom: 18px;
+}
+
+.card h2 {
+    font-size: 23px;
+
+    margin-bottom: 12px;
+}
+
+.card p {
+    color: #888;
+
+    line-height: 1.6;
+
+    margin-bottom: 25px;
+}
+
+.card a {
+    display: inline-block;
+
+    padding: 12px 20px;
+
+    background: #d90416;
+
+    color: white;
+
+    text-decoration: none;
+
+    border-radius: 5px;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+.card a:hover {
+    background: #ff1025;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    height: 80px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-top: 1px solid #222;
+
+    color: #555;
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+    header {
+        padding: 0 5%;
+    }
+
+    .logo {
+        font-size: 23px;
+    }
+
+    main {
+        padding: 90px 6%;
+    }
+
+    .title h1 {
+        font-size: 40px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- HEADER -->
+
+<header>
+
+    <div class="logo">
+        NOSTRA
+    </div>
+
+    <a
+        href="index.html"
+        class="back"
+    >
+        ← Retour à l'accueil
+    </a>
+
+</header>
+
+
+<!-- MAIN -->
+
+<main>
+
+    <div class="container">
+
+
+        <div class="title">
+
+            <span>
+                NOSTRA
+            </span>
+
+            <h1>
+                Contactez-nous
+            </h1>
+
+            <p>
+                Une question, un problème ou besoin d'aide ?
+                Retrouvez les différents moyens de contacter Nostra.
+            </p>
+
+        </div>
+
+
+        <div class="cards">
+
+
+            <!-- DISCORD -->
+
+            <div class="card">
+
+                <div class="card-number">
+                    01
+                </div>
+
+                <h2>
+                    Discord
+                </h2>
+
+                <p>
+                    Rejoins le serveur Discord officiel de Nostra
+                    pour discuter avec la communauté et le staff.
+                </p>
+
+                <a
+                    href="https://discord.gg/P4w3pYbGU"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    REJOINDRE LE DISCORD
+                </a>
+
+            </div>
+
+
+            <!-- PROBLEME -->
+
+            <div class="card">
+
+                <div class="card-number">
+                    02
+                </div>
+
+                <h2>
+                    Signaler un problème
+                </h2>
+
+                <p>
+                    Tu rencontres un problème sur le serveur
+                    ou sur le site ? Contacte le staff sur Discord.
+                </p>
+
+                <a
+                    href="https://discord.gg/P4w3pYbGU"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    CONTACTER LE STAFF
+                </a>
+
+            </div>
+
+
+            <!-- QUESTION -->
+
+            <div class="card">
+
+                <div class="card-number">
+                    03
+                </div>
+
+                <h2>
+                    Une question ?
+                </h2>
+
+                <p>
+                    Pour toute question concernant Nostra,
+                    notre communauté Discord est disponible.
+                </p>
+
+                <a
+                    href="https://discord.gg/P4w3pYbGU"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    POSER UNE QUESTION
+                </a>
+
+            </div>
+
+
+            <!-- STAFF -->
+
+            <div class="card">
+
+                <div class="card-number">
+                    04
+                </div>
+
+                <h2>
+                    Contacter le staff
+                </h2>
+
+                <p>
+                    Pour contacter directement l'équipe Nostra,
+                    rends-toi sur notre serveur Discord officiel.
+                </p>
+
+                <a
+                    href="https://discord.gg/P4w3pYbGU"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    CONTACTER LE STAFF
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    NOSTRA — Serveur Roleplay
+
+</footer>
+
+
+</body>
+
+</html>
