@@ -1,661 +1,420 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Créer un compte — Nostra</title>
-
-<style>
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: Arial, sans-serif;
-
-    background: #050505;
-
-    color: white;
-
-    min-height: 100vh;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    padding: 30px;
-}
-
-
-/* =========================
-   CONTAINER
-========================= */
-
-.container {
-    width: 100%;
-
-    max-width: 480px;
-
-    background: #0d0d0d;
-
-    border: 1px solid #242424;
-
-    border-radius: 10px;
-
-    padding: 45px;
-
-    box-shadow:
-        0 20px 60px rgba(0, 0, 0, 0.5);
-}
-
-
-/* =========================
-   LOGO
-========================= */
-
-.logo {
-    text-align: center;
-
-    color: #e50914;
-
-    font-size: 32px;
-
-    font-weight: 900;
-
-    letter-spacing: 7px;
-
-    margin-bottom: 10px;
-}
-
-.subtitle {
-    text-align: center;
-
-    color: #777;
-
-    font-size: 14px;
-
-    margin-bottom: 35px;
-}
-
-
-/* =========================
-   FORM
-========================= */
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-label {
-    display: block;
-
-    color: #ccc;
-
-    font-size: 13px;
-
-    font-weight: bold;
-
-    margin-bottom: 8px;
-}
-
-input {
-    width: 100%;
-
-    padding: 14px 15px;
-
-    background: #151515;
-
-    border: 1px solid #303030;
-
-    border-radius: 5px;
-
-    color: white;
-
-    font-size: 14px;
-
-    outline: none;
-
-    transition: 0.3s;
-}
-
-input:focus {
-    border-color: #d90416;
-
-    box-shadow:
-        0 0 0 2px rgba(217, 4, 22, 0.12);
-}
-
-input::placeholder {
-    color: #555;
-}
-
-
-/* =========================
-   BUTTON
-========================= */
-
-button {
-    width: 100%;
-
-    padding: 15px;
-
-    margin-top: 10px;
-
-    background: #d90416;
-
-    color: white;
-
-    border: none;
-
-    border-radius: 5px;
-
-    font-size: 14px;
-
-    font-weight: bold;
-
-    cursor: pointer;
-
-    transition: 0.3s;
-}
-
-button:hover {
-    background: #ff1025;
-
-    transform: translateY(-1px);
-}
-
-button:disabled {
-    opacity: 0.6;
-
-    cursor: not-allowed;
-
-    transform: none;
-}
-
-
-/* =========================
-   MESSAGE
-========================= */
-
-.message {
-    display: none;
-
-    margin-top: 18px;
-
-    padding: 12px;
-
-    border-radius: 5px;
-
-    font-size: 13px;
-
-    text-align: center;
-
-    line-height: 1.5;
-}
-
-.message.success {
-    display: block;
-
-    background: rgba(0, 150, 70, 0.12);
-
-    border: 1px solid #087f3d;
-
-    color: #54d98c;
-}
-
-.message.error {
-    display: block;
-
-    background: rgba(217, 4, 22, 0.12);
-
-    border: 1px solid #8b0000;
-
-    color: #ff6b75;
-}
-
-
-/* =========================
-   LINKS
-========================= */
-
-.bottom {
-    text-align: center;
-
-    margin-top: 25px;
-
-    color: #777;
-
-    font-size: 13px;
-
-    line-height: 2;
-}
-
-.bottom a {
-    color: #e50914;
-
-    text-decoration: none;
-}
-
-.bottom a:hover {
-    text-decoration: underline;
-}
-
-
-/* =========================
-   MOBILE
-========================= */
-
-@media (max-width: 600px) {
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Créer un compte — Nostra</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
 
     body {
-        padding: 15px;
+      min-height: 100vh;
+      background: #0b0b0b;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
     }
 
     .container {
-        padding: 30px 22px;
+      width: 100%;
+      max-width: 430px;
+      background: #151515;
+      border: 1px solid #292929;
+      border-radius: 16px;
+      padding: 35px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
     }
 
     .logo {
-        font-size: 27px;
+      text-align: center;
+      font-size: 32px;
+      font-weight: 900;
+      letter-spacing: 3px;
+      color: #ff2b2b;
+      margin-bottom: 8px;
     }
 
-}
+    .subtitle {
+      text-align: center;
+      color: #999;
+      margin-bottom: 30px;
+      font-size: 14px;
+    }
 
-</style>
+    h1 {
+      text-align: center;
+      margin-bottom: 25px;
+      font-size: 24px;
+    }
 
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 14px;
+      color: #ddd;
+    }
+
+    input {
+      width: 100%;
+      padding: 13px 14px;
+      border-radius: 8px;
+      border: 1px solid #333;
+      background: #0d0d0d;
+      color: white;
+      outline: none;
+      font-size: 15px;
+    }
+
+    input:focus {
+      border-color: #ff2b2b;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      background: #ff2b2b;
+      color: white;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 8px;
+    }
+
+    button:hover {
+      background: #e52222;
+    }
+
+    button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .message {
+      display: none;
+      margin-top: 15px;
+      padding: 12px;
+      border-radius: 8px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .error {
+      display: block;
+      background: #3a1111;
+      color: #ff6b6b;
+      border: 1px solid #702020;
+    }
+
+    .success {
+      display: block;
+      background: #12351d;
+      color: #6cff8b;
+      border: 1px solid #236b34;
+    }
+
+    .login {
+      text-align: center;
+      margin-top: 22px;
+      color: #999;
+      font-size: 14px;
+    }
+
+    .login a {
+      color: #ff3b3b;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .login a:hover {
+      text-decoration: underline;
+    }
+
+    .back {
+      display: block;
+      text-align: center;
+      margin-top: 20px;
+      color: #777;
+      text-decoration: none;
+      font-size: 13px;
+    }
+
+    .back:hover {
+      color: white;
+    }
+  </style>
 </head>
 
 <body>
 
+  <div class="container">
 
-<div class="container">
-
-    <div class="logo">
-        NOSTRA
-    </div>
+    <div class="logo">NOSTRA</div>
 
     <div class="subtitle">
-        Crée ton compte et rejoins l'aventure.
+      Crée ton compte Nostra
     </div>
 
+    <h1>Inscription</h1>
 
-    <form id="signupForm">
+    <form id="registerForm">
 
-
-        <!-- PSEUDO -->
-
-        <div class="form-group">
-
-            <label for="username">
-                Pseudo
-            </label>
-
-            <input
-                type="text"
-                id="username"
-                placeholder="Ton pseudo Nostra"
-                minlength="3"
-                maxlength="20"
-                required
-            >
-
-        </div>
-
-
-        <!-- EMAIL -->
-
-        <div class="form-group">
-
-            <label for="email">
-                Adresse email
-            </label>
-
-            <input
-                type="email"
-                id="email"
-                placeholder="exemple@email.com"
-                required
-            >
-
-        </div>
-
-
-        <!-- PASSWORD -->
-
-        <div class="form-group">
-
-            <label for="password">
-                Mot de passe
-            </label>
-
-            <input
-                type="password"
-                id="password"
-                placeholder="Minimum 6 caractères"
-                minlength="6"
-                required
-            >
-
-        </div>
-
-
-        <!-- CONFIRM PASSWORD -->
-
-        <div class="form-group">
-
-            <label for="confirmPassword">
-                Confirmer le mot de passe
-            </label>
-
-            <input
-                type="password"
-                id="confirmPassword"
-                placeholder="Confirme ton mot de passe"
-                minlength="6"
-                required
-            >
-
-        </div>
-
-
-        <button
-            type="submit"
-            id="signupButton"
+      <div class="form-group">
+        <label for="username">Pseudo</label>
+        <input
+          type="text"
+          id="username"
+          placeholder="Ton pseudo"
+          minlength="3"
+          maxlength="20"
+          required
         >
-            CRÉER MON COMPTE
-        </button>
+      </div>
 
+      <div class="form-group">
+        <label for="email">Adresse e-mail</label>
+        <input
+          type="email"
+          id="email"
+          placeholder="ton@email.com"
+          required
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="password">Mot de passe</label>
+        <input
+          type="password"
+          id="password"
+          placeholder="Minimum 6 caractères"
+          minlength="6"
+          required
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="confirmPassword">Confirmer le mot de passe</label>
+        <input
+          type="password"
+          id="confirmPassword"
+          placeholder="Retape ton mot de passe"
+          minlength="6"
+          required
+        >
+      </div>
+
+      <button type="submit" id="registerButton">
+        CRÉER MON COMPTE
+      </button>
 
     </form>
 
+    <div id="message" class="message"></div>
 
-    <div
-        id="message"
-        class="message"
-    ></div>
-
-
-    <div class="bottom">
-
-        Déjà un compte ?
-
-        <a href="connexion.html">
-            Se connecter
-        </a>
-
-        <br>
-
-        <a href="index.html">
-            ← Retour à l'accueil
-        </a>
-
+    <div class="login">
+      Déjà un compte ?
+      <a href="connexion.html">Se connecter</a>
     </div>
 
-</div>
+    <a href="index.html" class="back">
+      ← Retour à l'accueil
+    </a>
+
+  </div>
+
+  <script type="module">
+
+    import {
+      initializeApp
+    } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+
+    import {
+      getAuth,
+      createUserWithEmailAndPassword,
+      updateProfile
+    } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
+
+    import {
+      getFirestore,
+      doc,
+      setDoc,
+      serverTimestamp
+    } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
 
 
-<script type="module">
-
-import {
-    initializeApp
-} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
-
-import {
-    getAuth,
-    createUserWithEmailAndPassword,
-    updateProfile
-} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
-
-
-/* =========================
-   FIREBASE
-========================= */
-
-const firebaseConfig = {
-
-    apiKey: "AIzaSyDhCfjm-w29Ie1LUxhsMqUfEqB1n7jY6Go",
-
-    authDomain: "nostra-9cb24.firebaseapp.com",
-
-    projectId: "nostra-9cb24",
-
-    storageBucket: "nostra-9cb24.firebasestorage.app",
-
-    messagingSenderId: "681107105816",
-
-    appId: "1:681107105816:web:b6a393594780d021e3bb6d",
-
-    measurementId: "G-7ZPRB7P5PL"
-
-};
+    // Configuration Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyDhCfjm-w29Ie1LUxhsMqUfEqBn1n7jY6Go",
+      authDomain: "nostra-9cb24.firebaseapp.com",
+      projectId: "nostra-9cb24",
+      storageBucket: "nostra-9cb24.firebasestorage.app",
+      messagingSenderId: "681107105816",
+      appId: "1:681107105816:web:b6a393594780d021e3bb6d",
+      measurementId: "G-7ZPRB7P5PL"
+    };
 
 
-const app = initializeApp(firebaseConfig);
-
-const auth = getAuth(app);
-
-
-/* =========================
-   FORMULAIRE
-========================= */
-
-const form =
-    document.getElementById("signupForm");
-
-const button =
-    document.getElementById("signupButton");
-
-const message =
-    document.getElementById("message");
+    // Initialisation Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
 
 
-form.addEventListener("submit", async (event) => {
-
-    event.preventDefault();
-
-
-    const username =
-        document
-            .getElementById("username")
-            .value
-            .trim();
+    const form = document.getElementById("registerForm");
+    const message = document.getElementById("message");
+    const button = document.getElementById("registerButton");
 
 
-    const email =
-        document
-            .getElementById("email")
-            .value
-            .trim();
-
-
-    const password =
-        document
-            .getElementById("password")
-            .value;
-
-
-    const confirmPassword =
-        document
-            .getElementById("confirmPassword")
-            .value;
-
-
-    /* =========================
-       VALIDATIONS
-    ========================= */
-
-    if (username.length < 3) {
-
-        showMessage(
-            "Le pseudo doit contenir au moins 3 caractères.",
-            "error"
-        );
-
-        return;
+    function showMessage(text, type) {
+      message.textContent = text;
+      message.className = "message " + type;
     }
 
 
-    if (password !== confirmPassword) {
+    form.addEventListener("submit", async (event) => {
 
+      event.preventDefault();
+
+      const username = document
+        .getElementById("username")
+        .value
+        .trim();
+
+      const email = document
+        .getElementById("email")
+        .value
+        .trim();
+
+      const password = document
+        .getElementById("password")
+        .value;
+
+      const confirmPassword = document
+        .getElementById("confirmPassword")
+        .value;
+
+
+      // Vérification du pseudo
+      if (username.length < 3) {
         showMessage(
-            "Les deux mots de passe ne correspondent pas.",
-            "error"
+          "Le pseudo doit contenir au moins 3 caractères.",
+          "error"
         );
-
         return;
-    }
+      }
 
 
-    if (password.length < 6) {
-
+      // Vérification des mots de passe
+      if (password !== confirmPassword) {
         showMessage(
-            "Le mot de passe doit contenir au moins 6 caractères.",
-            "error"
+          "Les mots de passe ne correspondent pas.",
+          "error"
         );
-
         return;
-    }
+      }
 
 
-    button.disabled = true;
-
-    button.textContent =
-        "CRÉATION DU COMPTE...";
+      button.disabled = true;
+      button.textContent = "CRÉATION EN COURS...";
 
 
-    try {
+      try {
 
-        /* =========================
-           CREATION FIREBASE
-        ========================= */
-
+        // Création du compte Firebase
         const userCredential =
-            await createUserWithEmailAndPassword(
-                auth,
-                email,
-                password
-            );
+          await createUserWithEmailAndPassword(
+            auth,
+            email,
+            password
+          );
+
+        const user = userCredential.user;
 
 
-        const user =
-            userCredential.user;
+        // Enregistrement du pseudo dans Firebase Authentication
+        await updateProfile(user, {
+          displayName: username
+        });
 
 
-        /* =========================
-           PSEUDO DU COMPTE
-        ========================= */
-
-        await updateProfile(
-            user,
-            {
-                displayName: username
-            }
+        // Création du profil public dans Firestore
+        await setDoc(
+          doc(db, "profiles", user.uid),
+          {
+            pseudo: username,
+            createdAt: serverTimestamp()
+          }
         );
 
 
         showMessage(
-            "Compte créé avec succès ! Redirection...",
-            "success"
+          "Compte créé avec succès ! Redirection...",
+          "success"
         );
 
 
+        // Petite pause pour afficher le message
         setTimeout(() => {
-
-            window.location.href =
-                "connexion.html";
-
-        }, 1500);
+          window.location.href = "connexion.html";
+        }, 1200);
 
 
-    } catch (error) {
+      } catch (error) {
 
         console.error(error);
 
-
         let errorMessage =
-            "Une erreur est survenue.";
+          "Une erreur est survenue. Réessaie.";
 
 
-        if (
-            error.code ===
-            "auth/email-already-in-use"
-        ) {
-
-            errorMessage =
-                "Cette adresse email possède déjà un compte.";
-
+        if (error.code === "auth/email-already-in-use") {
+          errorMessage =
+            "Cette adresse e-mail est déjà utilisée.";
         }
 
-        else if (
-            error.code ===
-            "auth/invalid-email"
-        ) {
-
-            errorMessage =
-                "L'adresse email n'est pas valide.";
-
+        else if (error.code === "auth/invalid-email") {
+          errorMessage =
+            "L'adresse e-mail n'est pas valide.";
         }
 
-        else if (
-            error.code ===
-            "auth/weak-password"
-        ) {
-
-            errorMessage =
-                "Le mot de passe est trop faible.";
-
+        else if (error.code === "auth/weak-password") {
+          errorMessage =
+            "Le mot de passe est trop faible.";
         }
 
-        else if (
-            error.code ===
-            "auth/operation-not-allowed"
-        ) {
-
-            errorMessage =
-                "La connexion par email/mot de passe n'est pas activée dans Firebase.";
-
+        else if (error.code === "auth/operation-not-allowed") {
+          errorMessage =
+            "L'inscription par e-mail n'est pas activée dans Firebase.";
         }
 
+        else if (error.code === "auth/network-request-failed") {
+          errorMessage =
+            "Problème de connexion Internet.";
+        }
 
-        showMessage(
-            errorMessage,
-            "error"
-        );
-
+        showMessage(errorMessage, "error");
 
         button.disabled = false;
+        button.textContent = "CRÉER MON COMPTE";
+      }
 
-        button.textContent =
-            "CRÉER MON COMPTE";
+    });
 
-    }
-
-});
-
-
-/* =========================
-   MESSAGE
-========================= */
-
-function showMessage(text, type) {
-
-    message.textContent = text;
-
-    message.className =
-        "message " + type;
-
-}
-
-</script>
-
+  </script>
 
 </body>
-
 </html>
