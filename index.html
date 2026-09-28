@@ -1,236 +1,491 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nostra RP</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<title>Nostra RP</title>
 
-        body {
-            font-family: Arial, sans-serif;
-            background: #080808;
-            color: white;
-        }
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        header {
-            height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 6%;
-            background: rgba(0, 0, 0, 0.85);
-            border-bottom: 1px solid #222;
-        }
+html {
+    scroll-behavior: smooth;
+}
 
-        .logo {
-            font-size: 28px;
-            font-weight: bold;
-            letter-spacing: 5px;
-            color: #e00000;
-        }
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #050505;
+    color: white;
+}
 
-        nav {
-            display: flex;
-            gap: 30px;
-        }
+/* =========================
+   NAVIGATION
+========================= */
 
-        nav a {
-            color: #aaa;
-            text-decoration: none;
-            transition: 0.3s;
-        }
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
 
-        nav a:hover {
-            color: white;
-        }
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-        .buttons {
-            display: flex;
-            gap: 10px;
-        }
+    padding: 0 6%;
 
-        button {
-            padding: 12px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-        }
+    background: rgba(5, 5, 5, 0.88);
+    backdrop-filter: blur(12px);
 
-        .login {
-            background: transparent;
-            border: 1px solid #555;
-            color: white;
-        }
+    border-bottom: 1px solid rgba(255,255,255,0.08);
 
-        .signup {
-            background: #d60000;
-            border: none;
-            color: white;
-        }
+    z-index: 1000;
+}
 
-        .hero {
-            min-height: calc(100vh - 80px);
-            display: flex;
-            align-items: center;
-            padding: 8%;
-            background:
-                linear-gradient(90deg, #080808 20%, rgba(8,8,8,.75), rgba(8,8,8,.3)),
-                linear-gradient(135deg, #260000, #080808 55%);
-        }
+.logo {
+    color: #e50914;
+    font-size: 26px;
+    font-weight: 900;
+    letter-spacing: 6px;
+}
 
-        .hero-content {
-            max-width: 700px;
-        }
+nav {
+    display: flex;
+    gap: 32px;
+}
 
-        .tag {
-            color: #e00000;
-            font-weight: bold;
-            letter-spacing: 4px;
-            margin-bottom: 15px;
-        }
+nav a {
+    color: #aaa;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.3s;
+}
 
-        h1 {
-            font-size: clamp(70px, 12vw, 150px);
-            letter-spacing: 10px;
-            line-height: .9;
-        }
+nav a:hover {
+    color: white;
+}
 
-        h2 {
-            margin-top: 20px;
-            font-size: 25px;
-            color: #ddd;
-        }
+/* =========================
+   BOUTONS
+========================= */
 
-        .description {
-            margin-top: 20px;
-            color: #999;
-            font-size: 17px;
-            line-height: 1.7;
-        }
+.btn {
+    display: inline-block;
 
-        .hero-buttons {
-            margin-top: 35px;
-            display: flex;
-            gap: 15px;
-        }
+    padding: 12px 20px;
 
-        .hero-buttons button {
-            padding: 15px 25px;
-        }
+    border-radius: 5px;
 
-        .features {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            padding: 50px 6%;
-            background: #050505;
-        }
+    font-weight: bold;
+    font-size: 14px;
 
-        .feature {
-            padding: 25px;
-            border: 1px solid #222;
-            background: #0d0d0d;
-        }
+    text-decoration: none;
 
-        .feature h3 {
-            margin-bottom: 10px;
-            color: white;
-        }
+    cursor: pointer;
 
-        .feature p {
-            color: #777;
-            line-height: 1.5;
-        }
+    transition: 0.3s;
+}
 
-        @media (max-width: 800px) {
-            nav {
-                display: none;
-            }
+.btn-outline {
+    color: white;
 
-            .features {
-                grid-template-columns: 1fr;
-            }
+    background: transparent;
 
-            .buttons {
-                display: none;
-            }
-        }
-    </style>
+    border: 1px solid #444;
+}
+
+.btn-outline:hover {
+    border-color: white;
+    transform: translateY(-2px);
+}
+
+.btn-red {
+    color: white;
+
+    background: #d90416;
+
+    border: 1px solid #d90416;
+}
+
+.btn-red:hover {
+    background: #ff1025;
+    border-color: #ff1025;
+
+    transform: translateY(-2px);
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+
+    padding: 120px 8% 80px;
+
+    position: relative;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 80% 40%,
+            rgba(150,0,0,0.35),
+            transparent 35%
+        ),
+
+        linear-gradient(
+            120deg,
+            #050505 20%,
+            #150000 60%,
+            #050505
+        );
+}
+
+.hero::after {
+    content: "";
+
+    position: absolute;
+
+    width: 500px;
+    height: 500px;
+
+    right: -200px;
+    top: 100px;
+
+    background: #b00000;
+
+    filter: blur(180px);
+
+    opacity: 0.25;
+}
+
+.hero-content {
+    max-width: 750px;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+.tag {
+    color: #e50914;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    letter-spacing: 5px;
+
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: clamp(70px, 13vw, 170px);
+
+    line-height: 0.85;
+
+    letter-spacing: 12px;
+
+    font-weight: 900;
+}
+
+.subtitle {
+    margin-top: 30px;
+
+    font-size: 25px;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+}
+
+.description {
+    max-width: 600px;
+
+    margin-top: 20px;
+
+    color: #999;
+
+    font-size: 17px;
+
+    line-height: 1.7;
+}
+
+.hero-buttons {
+    display: flex;
+
+    gap: 15px;
+
+    margin-top: 35px;
+}
+
+/* =========================
+   FEATURES
+========================= */
+
+.features {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 1px;
+
+    background: #222;
+}
+
+.feature {
+    padding: 40px 30px;
+
+    background: #080808;
+
+    transition: 0.3s;
+}
+
+.feature:hover {
+    background: #120000;
+}
+
+.feature h3 {
+    margin-bottom: 12px;
+
+    font-size: 17px;
+}
+
+.feature p {
+    color: #777;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 900px) {
+
+    nav {
+        display: none;
+    }
+
+    .nav-buttons {
+        display: none;
+    }
+
+    .features {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .hero {
+        padding: 120px 25px 70px;
+    }
+
+    h1 {
+        font-size: 70px;
+        letter-spacing: 5px;
+    }
+
+    .subtitle {
+        font-size: 19px;
+    }
+
+    .features {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+}
+</style>
 </head>
 
 <body>
 
+<!-- =========================
+     NAVIGATION
+========================= -->
+
 <header>
-    <div class="logo">NOSTRA</div>
+
+    <div class="logo">
+        NOSTRA
+    </div>
 
     <nav>
-        <a href="#">Accueil</a>
-        <a href="#">À propos</a>
-        <a href="#">Règles</a>
-        <a href="#">Contact</a>
+
+        <a href="index.html">
+            Accueil
+        </a>
+
+        <a href="#about">
+            À propos
+        </a>
+
+        <a href="#rules">
+            Règles
+        </a>
+
+        <a href="#contact">
+            Contact
+        </a>
+
     </nav>
 
-    <div class="buttons">
-        <a href="connexion.html" class="btn btn-outline">
-    Se connecter
+    <div class="nav-buttons">
+
+        <a
+            href="connexion.html"
+            class="btn btn-outline"
+        >
+            Se connecter
         </a>
-        <a href="connexion.html" class="btn btn-outline">
-    Se connecter
+
+        <a
+            href="inscription.html"
+            class="btn btn-red"
+        >
+            Créer un compte
         </a>
+
     </div>
+
 </header>
+
+
+<!-- =========================
+     ACCUEIL
+========================= -->
 
 <section class="hero">
 
     <div class="hero-content">
 
-        <div class="tag">SERVEUR ROLEPLAY</div>
+        <div class="tag">
+            SERVEUR ROLEPLAY
+        </div>
 
-        <h1>NOSTRA</h1>
+        <h1>
+            NOSTRA
+        </h1>
 
-        <h2>TON SERVEUR RP, TON HISTOIRE.</h2>
+        <div class="subtitle">
+            TON SERVEUR RP, TON HISTOIRE.
+        </div>
 
         <p class="description">
-            Rejoins Nostra et crée ton propre personnage.
-            Fais tes choix, rencontre d'autres joueurs et
-            écris ton histoire dans un univers RP immersif.
+
+            Bienvenue sur Nostra.
+
+            Crée ton personnage, rencontre d'autres joueurs
+            et écris ton propre scénario dans un univers
+            roleplay vivant et immersif.
+
         </p>
 
         <div class="hero-buttons">
-            <button class="signup">COMMENCER →</button>
-            <button class="login">DÉCOUVRIR NOSTRA</button>
+
+            <a
+                href="inscription.html"
+                class="btn btn-red"
+            >
+                COMMENCER →
+            </a>
+
+            <a
+                href="#about"
+                class="btn btn-outline"
+            >
+                DÉCOUVRIR NOSTRA
+            </a>
+
         </div>
 
     </div>
 
 </section>
 
-<section class="features">
+
+<!-- =========================
+     PRÉSENTATION
+========================= -->
+
+<section
+    class="features"
+    id="about"
+>
 
     <div class="feature">
-        <h3>Communauté active</h3>
-        <p>Une communauté de joueurs réunie autour du roleplay.</p>
+
+        <h3>
+            Une communauté active
+        </h3>
+
+        <p>
+            Rejoins des joueurs passionnés
+            par le roleplay.
+        </p>
+
     </div>
 
-    <div class="feature">
-        <h3>RP immersif</h3>
-        <p>Construis ton personnage et développe ton histoire.</p>
-    </div>
 
     <div class="feature">
-        <h3>Possibilités infinies</h3>
-        <p>Métiers, entreprises, organisations et bien plus.</p>
+
+        <h3>
+            Un RP immersif
+        </h3>
+
+        <p>
+            Développe ton personnage
+            et construis ton histoire.
+        </p>
+
     </div>
 
+
     <div class="feature">
-        <h3>Staff à l'écoute</h3>
-        <p>Une équipe présente pour accompagner les joueurs.</p>
+
+        <h3>
+            Des possibilités infinies
+        </h3>
+
+        <p>
+            Métiers, entreprises,
+            organisations et bien plus.
+        </p>
+
+    </div>
+
+
+    <div class="feature">
+
+        <h3>
+            Un staff à l'écoute
+        </h3>
+
+        <p>
+            Une équipe présente pour
+            accompagner les joueurs.
+        </p>
+
     </div>
 
 </section>
