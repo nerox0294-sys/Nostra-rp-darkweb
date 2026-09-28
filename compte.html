@@ -3,61 +3,85 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Mon compte — Nostra</title>
+  <title>Mon compte - Nostra</title>
 
   <style>
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: Arial, sans-serif;
+      box-sizing: border-box;
     }
 
     body {
-      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
       background: #0b0b0b;
       color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
+      min-height: 100vh;
     }
 
-    .container {
-      width: 100%;
-      max-width: 500px;
-      background: #151515;
-      border: 1px solid #292929;
-      border-radius: 16px;
-      padding: 35px;
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
-      text-align: center;
+    header {
+      height: 75px;
+      background: #111;
+      border-bottom: 1px solid #242424;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 50px;
     }
 
     .logo {
-      font-size: 30px;
+      font-size: 26px;
       font-weight: 900;
-      letter-spacing: 3px;
-      color: #ff2b2b;
-      margin-bottom: 30px;
+      color: #ff1e1e;
+      letter-spacing: 2px;
+    }
+
+    .back {
+      color: #aaa;
+      text-decoration: none;
+      font-size: 14px;
+      transition: 0.2s;
+    }
+
+    .back:hover {
+      color: white;
+    }
+
+    main {
+      min-height: calc(100vh - 75px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    .account-box {
+      width: 100%;
+      max-width: 520px;
+      background: #111;
+      border: 1px solid #242424;
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.45);
+      text-align: center;
     }
 
     .avatar {
       width: 90px;
       height: 90px;
-      margin: 0 auto 18px;
       border-radius: 50%;
-      background: #ff2b2b;
+      background: #ff1e1e;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 36px;
-      font-weight: bold;
+      margin: 0 auto 20px;
+      font-size: 38px;
+      font-weight: 900;
+      color: white;
     }
 
     h1 {
-      font-size: 25px;
+      font-size: 30px;
       margin-bottom: 8px;
     }
 
@@ -68,14 +92,23 @@
     }
 
     .status {
-      display: inline-block;
-      background: #12351d;
-      color: #6cff8b;
-      border: 1px solid #236b34;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0, 255, 120, 0.08);
+      border: 1px solid rgba(0, 255, 120, 0.2);
+      color: #35e875;
       padding: 8px 14px;
-      border-radius: 20px;
+      border-radius: 999px;
       font-size: 13px;
-      margin-bottom: 25px;
+      margin-bottom: 30px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      background: #35e875;
+      border-radius: 50%;
     }
 
     .buttons {
@@ -84,106 +117,107 @@
       gap: 12px;
     }
 
-    button,
-    .button {
+    .btn {
       width: 100%;
-      padding: 14px;
+      padding: 14px 18px;
+      border-radius: 9px;
       border: none;
-      border-radius: 8px;
       font-size: 15px;
-      font-weight: bold;
+      font-weight: 700;
       cursor: pointer;
       text-decoration: none;
+      transition: 0.2s;
       display: block;
     }
 
-    .profile-button {
-      background: #ff2b2b;
+    .btn-profile {
+      background: #ff1e1e;
       color: white;
     }
 
-    .profile-button:hover {
-      background: #e52222;
+    .btn-profile:hover {
+      background: #e51515;
     }
 
-    .logout-button {
-      background: #292929;
+    .btn-logout {
+      background: #1b1b1b;
+      color: #ff5555;
+      border: 1px solid #303030;
+    }
+
+    .btn-logout:hover {
+      background: #242424;
+    }
+
+    .home {
+      margin-top: 25px;
+      display: inline-block;
+      color: #777;
+      text-decoration: none;
+      font-size: 13px;
+    }
+
+    .home:hover {
       color: white;
     }
 
-    .logout-button:hover {
-      background: #3a3a3a;
-    }
-
-    .home-button {
-      background: transparent;
-      color: #888;
-      border: 1px solid #292929;
-    }
-
-    .home-button:hover {
-      color: white;
-      border-color: #444;
+    #loading {
+      color: #aaa;
+      font-size: 15px;
     }
   </style>
 </head>
 
 <body>
 
-  <div class="container">
-
+  <header>
     <div class="logo">NOSTRA</div>
+    <a href="index.html" class="back">← Accueil</a>
+  </header>
 
-    <div class="avatar" id="avatar">
-      ?
+  <main>
+
+    <div id="loading">
+      Chargement du compte...
     </div>
 
-    <h1 id="username">
-      Chargement...
-    </h1>
+    <div class="account-box" id="accountBox" style="display: none;">
 
-    <div class="email" id="email">
-      Chargement...
-    </div>
+      <div class="avatar" id="avatar">N</div>
 
-    <div class="status">
-      ● Connecté
-    </div>
+      <h1 id="username">Utilisateur</h1>
 
-    <div class="buttons">
+      <div class="email" id="email"></div>
 
-      <a
-        id="profileLink"
-        class="button profile-button"
-        href="#"
-      >
-        VOIR MON PROFIL PUBLIC
-      </a>
+      <div class="status">
+        <span class="dot"></span>
+        Connecté
+      </div>
 
-      <button
-        id="logoutButton"
-        class="logout-button"
-      >
-        SE DÉCONNECTER
-      </button>
+      <div class="buttons">
 
-      <a
-        href="index.html"
-        class="button home-button"
-      >
-        ← RETOUR À L'ACCUEIL
+        <a href="#" class="btn btn-profile" id="profileLink">
+          VOIR MON PROFIL PUBLIC
+        </a>
+
+        <button class="btn btn-logout" id="logoutBtn">
+          SE DÉCONNECTER
+        </button>
+
+      </div>
+
+      <a href="index.html" class="home">
+        ← Retour à l'accueil
       </a>
 
     </div>
 
-  </div>
-
+  </main>
 
   <script type="module">
 
-    import {
-      initializeApp
-    } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+    import { initializeApp }
+      from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
 
     import {
       getAuth,
@@ -207,11 +241,13 @@
     const auth = getAuth(app);
 
 
-    const avatar = document.getElementById("avatar");
+    const loading = document.getElementById("loading");
+    const accountBox = document.getElementById("accountBox");
     const username = document.getElementById("username");
     const email = document.getElementById("email");
+    const avatar = document.getElementById("avatar");
     const profileLink = document.getElementById("profileLink");
-    const logoutButton = document.getElementById("logoutButton");
+    const logoutBtn = document.getElementById("logoutBtn");
 
 
     onAuthStateChanged(auth, (user) => {
@@ -222,23 +258,26 @@
       }
 
 
-      const pseudo = user.displayName || "Membre Nostra";
+      const pseudo = user.displayName || "Utilisateur";
+
 
       username.textContent = pseudo;
       email.textContent = user.email || "";
 
-      avatar.textContent =
-        pseudo.charAt(0).toUpperCase();
+      avatar.textContent = pseudo.charAt(0).toUpperCase();
 
 
-      // Lien vers le profil public
       profileLink.href =
         `profil.html?uid=${encodeURIComponent(user.uid)}`;
+
+
+      loading.style.display = "none";
+      accountBox.style.display = "block";
 
     });
 
 
-    logoutButton.addEventListener("click", async () => {
+    logoutBtn.addEventListener("click", async () => {
 
       try {
 
@@ -248,9 +287,7 @@
 
       } catch (error) {
 
-        console.error(error);
-
-        alert("Impossible de se déconnecter. Réessaie.");
+        console.error("Erreur de déconnexion :", error);
 
       }
 
