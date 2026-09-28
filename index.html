@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nostra RP</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #080808;
+            color: white;
+        }
+
+        header {
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 6%;
+            background: rgba(0, 0, 0, 0.85);
+            border-bottom: 1px solid #222;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 5px;
+            color: #e00000;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            color: #aaa;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: white;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        button {
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .login {
+            background: transparent;
+            border: 1px solid #555;
+            color: white;
+        }
+
+        .signup {
+            background: #d60000;
+            border: none;
+            color: white;
+        }
+
+        .hero {
+            min-height: calc(100vh - 80px);
+            display: flex;
+            align-items: center;
+            padding: 8%;
+            background:
+                linear-gradient(90deg, #080808 20%, rgba(8,8,8,.75), rgba(8,8,8,.3)),
+                linear-gradient(135deg, #260000, #080808 55%);
+        }
+
+        .hero-content {
+            max-width: 700px;
+        }
+
+        .tag {
+            color: #e00000;
+            font-weight: bold;
+            letter-spacing: 4px;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: clamp(70px, 12vw, 150px);
+            letter-spacing: 10px;
+            line-height: .9;
+        }
+
+        h2 {
+            margin-top: 20px;
+            font-size: 25px;
+            color: #ddd;
+        }
+
+        .description {
+            margin-top: 20px;
+            color: #999;
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            margin-top: 35px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .hero-buttons button {
+            padding: 15px 25px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            padding: 50px 6%;
+            background: #050505;
+        }
+
+        .feature {
+            padding: 25px;
+            border: 1px solid #222;
+            background: #0d0d0d;
+        }
+
+        .feature h3 {
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .feature p {
+            color: #777;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 800px) {
+            nav {
+                display: none;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .buttons {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">NOSTRA</div>
+
+    <nav>
+        <a href="#">Accueil</a>
+        <a href="#">À propos</a>
+        <a href="#">Règles</a>
+        <a href="#">Contact</a>
+    </nav>
+
+    <div class="buttons">
+        <button class="login">Se connecter</button>
+        <button class="signup">Créer un compte</button>
+    </div>
+</header>
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="tag">SERVEUR ROLEPLAY</div>
+
+        <h1>NOSTRA</h1>
+
+        <h2>TON SERVEUR RP, TON HISTOIRE.</h2>
+
+        <p class="description">
+            Rejoins Nostra et crée ton propre personnage.
+            Fais tes choix, rencontre d'autres joueurs et
+            écris ton histoire dans un univers RP immersif.
+        </p>
+
+        <div class="hero-buttons">
+            <button class="signup">COMMENCER →</button>
+            <button class="login">DÉCOUVRIR NOSTRA</button>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="features">
+
+    <div class="feature">
+        <h3>Communauté active</h3>
+        <p>Une communauté de joueurs réunie autour du roleplay.</p>
+    </div>
+
+    <div class="feature">
+        <h3>RP immersif</h3>
+        <p>Construis ton personnage et développe ton histoire.</p>
+    </div>
+
+    <div class="feature">
+        <h3>Possibilités infinies</h3>
+        <p>Métiers, entreprises, organisations et bien plus.</p>
+    </div>
+
+    <div class="feature">
+        <h3>Staff à l'écoute</h3>
+        <p>Une équipe présente pour accompagner les joueurs.</p>
+    </div>
+
+</section>
+
+</body>
+</html>
