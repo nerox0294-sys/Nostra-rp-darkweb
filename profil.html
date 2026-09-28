@@ -4,197 +4,233 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Profil — Nostra</title>
+  <title>Profil public - Nostra</title>
 
   <style>
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: Arial, sans-serif;
+      box-sizing: border-box;
     }
 
     body {
-      min-height: 100vh;
-      background:
-        radial-gradient(circle at top, #251010 0%, #0b0b0b 45%);
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0b0b0b;
       color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
+      min-height: 100vh;
     }
 
-    .container {
-      width: 100%;
-      max-width: 520px;
-      background: rgba(21, 21, 21, 0.96);
-      border: 1px solid #2d2d2d;
-      border-radius: 18px;
-      padding: 40px 30px;
-      text-align: center;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+    header {
+      height: 75px;
+      background: #111;
+      border-bottom: 1px solid #242424;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 0 50px;
     }
 
     .logo {
-      color: #ff2b2b;
-      font-size: 30px;
+      color: #ff1e1e;
+      font-size: 26px;
       font-weight: 900;
-      letter-spacing: 4px;
-      margin-bottom: 35px;
-    }
-
-    .avatar {
-      width: 110px;
-      height: 110px;
-      margin: 0 auto 20px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #ff2b2b, #9e1111);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 44px;
-      font-weight: 900;
-      box-shadow: 0 0 30px rgba(255, 43, 43, 0.25);
-    }
-
-    .username {
-      font-size: 30px;
-      font-weight: 800;
-      margin-bottom: 10px;
-      word-break: break-word;
-    }
-
-    .member {
-      color: #ff4b4b;
-      font-size: 14px;
-      font-weight: bold;
-      margin-bottom: 30px;
-    }
-
-    .info {
-      background: #101010;
-      border: 1px solid #292929;
-      border-radius: 12px;
-      padding: 18px;
-      text-align: left;
-      margin-bottom: 25px;
-    }
-
-    .info-title {
-      color: #777;
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 7px;
-    }
-
-    .info-value {
-      color: #ddd;
-      font-size: 15px;
-      word-break: break-all;
+      letter-spacing: 2px;
     }
 
     .back {
-      display: block;
-      width: 100%;
-      padding: 14px;
-      border-radius: 8px;
-      border: 1px solid #292929;
       color: #aaa;
       text-decoration: none;
-      font-weight: bold;
       font-size: 14px;
     }
 
     .back:hover {
       color: white;
-      border-color: #444;
-      background: #1c1c1c;
     }
 
-    .loading {
-      color: #888;
-      font-size: 15px;
+    main {
+      min-height: calc(100vh - 75px);
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      padding: 40px 20px;
+    }
+
+    .profile-box {
+      width: 100%;
+      max-width: 500px;
+
+      background: #111;
+      border: 1px solid #242424;
+      border-radius: 16px;
+
+      padding: 40px;
+
+      text-align: center;
+
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.45);
+    }
+
+    .avatar {
+      width: 100px;
+      height: 100px;
+
+      margin: 0 auto 20px;
+
+      border-radius: 50%;
+
+      background: #ff1e1e;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-size: 42px;
+      font-weight: 900;
+    }
+
+    h1 {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    .member {
+      color: #35e875;
+      font-size: 13px;
+      font-weight: 700;
+
+      margin-bottom: 30px;
+    }
+
+    .info {
+      background: #181818;
+      border: 1px solid #292929;
+
+      border-radius: 10px;
+
+      padding: 18px;
+
+      margin-bottom: 25px;
+
+      text-align: left;
+    }
+
+    .label {
+      color: #777;
+      font-size: 12px;
+      text-transform: uppercase;
+
+      margin-bottom: 7px;
+    }
+
+    .value {
+      color: #ddd;
+      font-size: 14px;
+
+      word-break: break-all;
     }
 
     .error {
-      color: #ff6464;
-      background: #321414;
-      border: 1px solid #682222;
-      padding: 15px;
-      border-radius: 10px;
-      margin-bottom: 20px;
+      color: #ff5555;
+      font-size: 15px;
+      line-height: 1.5;
     }
 
-    .hidden {
-      display: none;
+    .loading {
+      color: #aaa;
+    }
+
+    .home {
+      display: inline-block;
+
+      margin-top: 10px;
+
+      color: #777;
+      text-decoration: none;
+
+      font-size: 13px;
+    }
+
+    .home:hover {
+      color: white;
     }
   </style>
 </head>
 
 <body>
 
-  <div class="container">
+  <header>
 
-    <div class="logo">NOSTRA</div>
-
-    <div id="loading" class="loading">
-      Chargement du profil...
+    <div class="logo">
+      NOSTRA
     </div>
 
-    <div id="profile" class="hidden">
+    <a href="index.html" class="back">
+      ← Accueil
+    </a>
 
-      <div class="avatar" id="avatar">
-        ?
+  </header>
+
+
+  <main>
+
+    <div class="profile-box">
+
+      <div id="loading" class="loading">
+        Chargement du profil...
       </div>
 
-      <div class="username" id="username">
-        —
-      </div>
 
-      <div class="member">
-        ● MEMBRE NOSTRA
-      </div>
+      <div id="profileContent" style="display: none;">
 
-      <div class="info">
-
-        <div class="info-title">
-          Identifiant public
+        <div class="avatar" id="avatar">
+          N
         </div>
 
-        <div class="info-value" id="userId">
-          —
+        <h1 id="pseudo">
+          Utilisateur
+        </h1>
+
+        <div class="member">
+          ● MEMBRE NOSTRA
         </div>
 
+
+        <div class="info">
+
+          <div class="label">
+            Identifiant public
+          </div>
+
+          <div class="value" id="uid">
+          </div>
+
+        </div>
+
+
+        <a href="index.html" class="home">
+          ← Retour à l'accueil
+        </a>
+
       </div>
 
-      <a href="index.html" class="back">
-        ← Retour à l'accueil
-      </a>
+
+      <div id="error" class="error" style="display: none;">
+        Impossible de charger ce profil.
+      </div>
 
     </div>
 
-    <div id="error" class="hidden">
-
-      <div class="error" id="errorMessage">
-        Profil introuvable.
-      </div>
-
-      <a href="index.html" class="back">
-        ← Retour à l'accueil
-      </a>
-
-    </div>
-
-  </div>
+  </main>
 
 
   <script type="module">
 
-    import {
-      initializeApp
-    } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+    import { initializeApp }
+      from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
 
     import {
       getFirestore,
@@ -204,56 +240,65 @@
 
 
     const firebaseConfig = {
+
       apiKey: "AIzaSyDhCfjm-w29Ie1LUxhsMqUfEqBn1n7jY6Go",
+
       authDomain: "nostra-9cb24.firebaseapp.com",
+
       projectId: "nostra-9cb24",
+
       storageBucket: "nostra-9cb24.firebasestorage.app",
+
       messagingSenderId: "681107105816",
+
       appId: "1:681107105816:web:b6a393594780d021e3bb6d",
+
       measurementId: "G-7ZPRB7P5PL"
+
     };
 
 
     const app = initializeApp(firebaseConfig);
+
     const db = getFirestore(app);
 
 
-    const loading = document.getElementById("loading");
-    const profile = document.getElementById("profile");
-    const error = document.getElementById("error");
+    const loading =
+      document.getElementById("loading");
 
-    const avatar = document.getElementById("avatar");
-    const username = document.getElementById("username");
-    const userId = document.getElementById("userId");
-    const errorMessage = document.getElementById("errorMessage");
+    const profileContent =
+      document.getElementById("profileContent");
+
+    const error =
+      document.getElementById("error");
+
+    const pseudo =
+      document.getElementById("pseudo");
+
+    const avatar =
+      document.getElementById("avatar");
+
+    const uidElement =
+      document.getElementById("uid");
 
 
-    function escapeHTML(value) {
-      return String(value)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
-    }
+    const params =
+      new URLSearchParams(window.location.search);
+
+    const uid =
+      params.get("uid");
 
 
     async function loadProfile() {
 
-      const params = new URLSearchParams(
-        window.location.search
-      );
-
-      const uid = params.get("uid");
-
-
       if (!uid) {
 
-        loading.classList.add("hidden");
-        error.classList.remove("hidden");
+        loading.style.display = "none";
 
-        errorMessage.textContent =
-          "Aucun profil n'a été indiqué.";
+        error.textContent =
+          "Aucun profil n'a été sélectionné.";
+
+        error.style.display = "block";
 
         return;
       }
@@ -261,55 +306,63 @@
 
       try {
 
-        const profileRef = doc(
-          db,
-          "profiles",
-          uid
-        );
+        const profileRef =
+          doc(db, "profiles", uid);
 
-        const profileSnapshot =
+        const profileSnap =
           await getDoc(profileRef);
 
 
-        if (!profileSnapshot.exists()) {
+        if (!profileSnap.exists()) {
 
-          loading.classList.add("hidden");
-          error.classList.remove("hidden");
+          loading.style.display = "none";
 
-          errorMessage.textContent =
-            "Ce profil n'existe pas.";
+          error.textContent =
+            "Ce profil n'existe pas encore.";
+
+          error.style.display = "block";
 
           return;
         }
 
 
-        const data = profileSnapshot.data();
-
-        const pseudo =
-          data.pseudo || "Membre Nostra";
+        const data =
+          profileSnap.data();
 
 
-        username.textContent = pseudo;
+        const username =
+          data.pseudo || "Utilisateur";
+
+
+        pseudo.textContent =
+          username;
 
         avatar.textContent =
-          pseudo.charAt(0).toUpperCase();
+          username.charAt(0).toUpperCase();
 
-        userId.textContent = uid;
+        uidElement.textContent =
+          uid;
 
 
-        loading.classList.add("hidden");
-        profile.classList.remove("hidden");
+        loading.style.display =
+          "none";
+
+        profileContent.style.display =
+          "block";
 
 
       } catch (err) {
 
         console.error(err);
 
-        loading.classList.add("hidden");
-        error.classList.remove("hidden");
+        loading.style.display =
+          "none";
 
-        errorMessage.textContent =
-          "Impossible de charger ce profil.";
+        error.textContent =
+          "Une erreur est survenue lors du chargement du profil.";
+
+        error.style.display =
+          "block";
 
       }
 
