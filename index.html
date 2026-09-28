@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Nostra — Serveur Roleplay</title>
+<title>Contact — Nostra</title>
 
 <style>
 
@@ -15,14 +15,20 @@
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
 body {
+    min-height: 100vh;
+
     font-family: Arial, sans-serif;
-    background: #050505;
+
     color: white;
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            #350000,
+            transparent 45%
+        ),
+        #050505;
 }
 
 /* =========================
@@ -30,11 +36,6 @@ body {
 ========================= */
 
 header {
-    position: fixed;
-    top: 0;
-    left: 0;
-
-    width: 100%;
     height: 80px;
 
     display: flex;
@@ -43,13 +44,9 @@ header {
 
     padding: 0 6%;
 
-    background: rgba(5, 5, 5, 0.92);
-
     border-bottom: 1px solid #222;
 
-    z-index: 1000;
-
-    backdrop-filter: blur(10px);
+    background: rgba(5, 5, 5, 0.95);
 }
 
 .logo {
@@ -62,13 +59,7 @@ header {
     letter-spacing: 6px;
 }
 
-nav {
-    display: flex;
-
-    gap: 30px;
-}
-
-nav a {
+.back {
     color: #aaa;
 
     text-decoration: none;
@@ -78,215 +69,28 @@ nav a {
     transition: 0.3s;
 }
 
-nav a:hover {
+.back:hover {
     color: white;
-}
-
-.header-buttons {
-    display: flex;
-
-    gap: 10px;
-}
-
-.btn {
-    padding: 11px 18px;
-
-    border-radius: 5px;
-
-    text-decoration: none;
-
-    font-size: 13px;
-
-    font-weight: bold;
-
-    transition: 0.3s;
-}
-
-.btn-outline {
-    color: white;
-
-    border: 1px solid #444;
-}
-
-.btn-outline:hover {
-    background: #151515;
-}
-
-.btn-red {
-    color: white;
-
-    background: #d90416;
-}
-
-.btn-red:hover {
-    background: #ff1025;
 }
 
 
 /* =========================
-   HERO
+   CONTENT
 ========================= */
 
-.hero {
-    min-height: 100vh;
+.container {
+    width: min(950px, 90%);
 
-    display: flex;
-    align-items: center;
-
-    padding: 120px 8% 80px;
-
-    position: relative;
-
-    overflow: hidden;
-
-    background:
-        radial-gradient(
-            circle at 75% 35%,
-            rgba(130, 0, 0, 0.35),
-            transparent 35%
-        ),
-        radial-gradient(
-            circle at 20% 80%,
-            rgba(90, 0, 0, 0.25),
-            transparent 35%
-        ),
-        #050505;
+    margin: 70px auto;
 }
 
-.hero::before {
-    content: "";
-
-    position: absolute;
-
-    width: 600px;
-    height: 600px;
-
-    right: -200px;
-    top: 100px;
-
-    background: #8b0000;
-
-    filter: blur(180px);
-
-    opacity: 0.18;
-}
-
-.hero-content {
-    position: relative;
-
-    max-width: 850px;
-
-    z-index: 2;
-}
-
-.tag {
-    color: #e50914;
-
-    font-size: 14px;
-
-    font-weight: bold;
-
-    letter-spacing: 4px;
-
-    margin-bottom: 20px;
-}
-
-.hero h1 {
-    font-size: clamp(70px, 13vw, 170px);
-
-    line-height: 0.85;
-
-    font-weight: 900;
-
-    letter-spacing: -5px;
-
-    margin-bottom: 30px;
-}
-
-.hero h1 span {
-    color: #e50914;
-}
-
-.hero h2 {
-    font-size: clamp(22px, 3vw, 38px);
-
-    margin-bottom: 20px;
-}
-
-.hero p {
-    max-width: 650px;
-
-    color: #999;
-
-    font-size: 17px;
-
-    line-height: 1.7;
-
-    margin-bottom: 35px;
-}
-
-.hero-buttons {
-    display: flex;
-
-    gap: 15px;
-
-    flex-wrap: wrap;
-}
-
-.hero-button {
-    padding: 15px 25px;
-
-    border-radius: 5px;
-
-    text-decoration: none;
-
-    font-weight: bold;
-
-    font-size: 14px;
-
-    transition: 0.3s;
-}
-
-.hero-primary {
-    background: #d90416;
-
-    color: white;
-}
-
-.hero-primary:hover {
-    background: #ff1025;
-
-    transform: translateY(-2px);
-}
-
-.hero-secondary {
-    border: 1px solid #444;
-
-    color: white;
-}
-
-.hero-secondary:hover {
-    background: #151515;
-}
-
-
-/* =========================
-   FEATURES
-========================= */
-
-.features {
-    padding: 100px 8%;
-
-    background: #080808;
-}
-
-.section-title {
+.title {
     text-align: center;
 
-    margin-bottom: 60px;
+    margin-bottom: 55px;
 }
 
-.section-title span {
+.title span {
     color: #e50914;
 
     font-size: 13px;
@@ -296,21 +100,34 @@ nav a:hover {
     letter-spacing: 3px;
 }
 
-.section-title h2 {
-    font-size: 40px;
+.title h1 {
+    font-size: 45px;
 
-    margin-top: 10px;
+    margin-top: 12px;
+
+    margin-bottom: 15px;
 }
 
-.cards {
-    max-width: 1200px;
+.title p {
+    color: #888;
+
+    line-height: 1.7;
+
+    max-width: 650px;
 
     margin: auto;
+}
 
+
+/* =========================
+   CONTACT CARDS
+========================= */
+
+.cards {
     display: grid;
 
     grid-template-columns:
-        repeat(4, 1fr);
+        repeat(2, 1fr);
 
     gap: 20px;
 }
@@ -320,7 +137,7 @@ nav a:hover {
 
     background: #101010;
 
-    border: 1px solid #242424;
+    border: 1px solid #252525;
 
     border-radius: 8px;
 
@@ -333,18 +150,31 @@ nav a:hover {
     border-color: #7a0000;
 }
 
-.card-number {
-    color: #e50914;
+.icon {
+    width: 45px;
+    height: 45px;
 
-    font-size: 13px;
-
-    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     margin-bottom: 20px;
+
+    border-radius: 6px;
+
+    background: #210000;
+
+    color: #e50914;
+
+    font-size: 20px;
+
+    font-weight: bold;
 }
 
-.card h3 {
+.card h2 {
     margin-bottom: 12px;
+
+    font-size: 21px;
 }
 
 .card p {
@@ -353,39 +183,32 @@ nav a:hover {
     line-height: 1.6;
 
     font-size: 14px;
+
+    margin-bottom: 22px;
 }
 
+.card a {
+    display: inline-block;
 
-/* =========================
-   ABOUT
-========================= */
+    padding: 11px 18px;
 
-.about {
-    padding: 100px 8%;
+    border-radius: 5px;
 
-    background: #050505;
+    background: #d90416;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    transition: 0.3s;
 }
 
-.about-content {
-    max-width: 1000px;
-
-    margin: auto;
-
-    text-align: center;
-}
-
-.about-content h2 {
-    font-size: 40px;
-
-    margin-bottom: 20px;
-}
-
-.about-content p {
-    color: #999;
-
-    line-height: 1.8;
-
-    font-size: 16px;
+.card a:hover {
+    background: #ff1025;
 }
 
 
@@ -394,11 +217,11 @@ nav a:hover {
 ========================= */
 
 footer {
-    padding: 40px 8%;
+    margin-top: 80px;
+
+    padding: 40px;
 
     border-top: 1px solid #222;
-
-    background: #050505;
 
     text-align: center;
 
@@ -412,54 +235,14 @@ footer {
    MOBILE
 ========================= */
 
-@media (max-width: 900px) {
-
-    nav {
-        display: none;
-    }
-
-    .cards {
-        grid-template-columns:
-            repeat(2, 1fr);
-    }
-
-}
-
-@media (max-width: 600px) {
-
-    header {
-        padding: 0 5%;
-    }
-
-    .header-buttons {
-        gap: 5px;
-    }
-
-    .btn {
-        padding: 9px 12px;
-
-        font-size: 11px;
-    }
-
-    .hero {
-        padding-left: 6%;
-
-        padding-right: 6%;
-    }
-
-    .hero h1 {
-        font-size: 75px;
-
-        letter-spacing: -3px;
-    }
+@media (max-width: 700px) {
 
     .cards {
         grid-template-columns: 1fr;
     }
 
-    .section-title h2,
-    .about-content h2 {
-        font-size: 32px;
+    .title h1 {
+        font-size: 36px;
     }
 
 }
@@ -471,117 +254,40 @@ footer {
 <body>
 
 
-<!-- =========================
-     HEADER
-========================= -->
-
 <header>
 
     <div class="logo">
         NOSTRA
     </div>
 
-    <nav>
-
-        <a href="#about">
-            À propos
-        </a>
-
-        <a href="regles.html">
-            Règles
-        </a>
-
-        <a href="#contact">
-            Contact
-        </a>
-
-    </nav>
-
-    <div class="header-buttons">
-
-        <a
-            href="connexion.html"
-            class="btn btn-outline"
-        >
-            Se connecter
-        </a>
-
-        <a
-            href="inscription.html"
-            class="btn btn-red"
-        >
-            Créer un compte
-        </a>
-
-    </div>
+    <a
+        class="back"
+        href="index.html"
+    >
+        ← Retour à l'accueil
+    </a>
 
 </header>
 
 
-<!-- =========================
-     HERO
-========================= -->
-
-<section class="hero">
-
-    <div class="hero-content">
-
-        <div class="tag">
-            SERVEUR ROLEPLAY
-        </div>
-
-        <h1>
-            NOST<span>R</span>A
-        </h1>
-
-        <h2>
-            TON SERVEUR RP, TON HISTOIRE.
-        </h2>
-
-        <p>
-            Plonge dans un univers Roleplay où chaque décision
-            peut changer ton histoire. Crée ton personnage,
-            rejoins la communauté et écris ton propre scénario.
-        </p>
-
-        <div class="hero-buttons">
-
-            <a
-                href="inscription.html"
-                class="hero-button hero-primary"
-            >
-                COMMENCER →
-            </a>
-
-            <a
-                href="#about"
-                class="hero-button hero-secondary"
-            >
-                DÉCOUVRIR NOSTRA
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
+<main class="container">
 
 
-<!-- =========================
-     FEATURES
-========================= -->
-
-<section class="features">
-
-    <div class="section-title">
+    <div class="title">
 
         <span>
-            L'EXPÉRIENCE NOSTRA
+            BESOIN D'AIDE ?
         </span>
 
-        <h2>
-            Un univers. Ton histoire.
-        </h2>
+        <h1>
+            Contactez Nostra
+        </h1>
+
+        <p>
+            Une question, un problème ou besoin de contacter
+            l'équipe ? Choisis le moyen de contact qui
+            correspond à ta demande.
+        </p>
 
     </div>
 
@@ -589,139 +295,113 @@ footer {
     <div class="cards">
 
 
+        <!-- DISCORD -->
+
         <div class="card">
 
-            <div class="card-number">
-                01
+            <div class="icon">
+                D
             </div>
 
-            <h3>
-                Roleplay
-            </h3>
+            <h2>
+                Discord
+            </h2>
 
             <p>
-                Plonge dans un univers immersif où
-                chaque joueur écrit sa propre histoire.
+                Rejoins le Discord officiel de Nostra pour
+                discuter avec la communauté et contacter
+                le staff.
             </p>
+
+            <a
+                href="https://discord.gg/P4w3pYbGU"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                REJOINDRE LE DISCORD
+            </a>
 
         </div>
 
 
+        <!-- PROBLÈME -->
+
         <div class="card">
 
-            <div class="card-number">
-                02
+            <div class="icon">
+                !
             </div>
 
-            <h3>
-                Communauté
-            </h3>
+            <h2>
+                Signaler un problème
+            </h2>
 
             <p>
-                Rejoins une communauté de joueurs
-                passionnés par le Roleplay.
+                Tu rencontres un problème sur le serveur ou
+                sur le site ? Contacte le staff afin que nous
+                puissions t'aider.
             </p>
+
+            <a href="https://discord.gg/P4w3pYbGU" target="_blank" rel="noopener noreferrer">
+                CONTACTER LE STAFF
+            </a>
 
         </div>
 
 
+        <!-- QUESTION -->
+
         <div class="card">
 
-            <div class="card-number">
-                03
+            <div class="icon">
+                ?
             </div>
 
-            <h3>
-                Liberté
-            </h3>
+            <h2>
+                Une question ?
+            </h2>
 
             <p>
-                Fais tes choix, construis ton personnage
-                et développe ta propre histoire.
+                Tu as une question concernant Nostra,
+                le Roleplay ou le fonctionnement du serveur ?
             </p>
+
+            <a href="https://discord.gg/P4w3pYbGU" target="_blank" rel="noopener noreferrer">
+                POSER UNE QUESTION
+            </a>
 
         </div>
 
 
+        <!-- STAFF -->
+
         <div class="card">
 
-            <div class="card-number">
-                04
+            <div class="icon">
+                S
             </div>
 
-            <h3>
-                Événements
-            </h3>
+            <h2>
+                Contacter le staff
+            </h2>
 
             <p>
-                Participe à des événements et
-                situations uniques organisés sur Nostra.
+                Pour toute demande concernant la modération,
+                les candidatures ou le serveur, contacte
+                directement l'équipe.
             </p>
 
+            <a href="https://discord.gg/P4w3pYbGU" target="_blank" rel="noopener noreferrer">
+                CONTACTER
+            </a>
+
         </div>
+
 
     </div>
 
-</section>
+</main>
 
-
-<!-- =========================
-     ABOUT
-========================= -->
-
-<section
-    class="about"
-    id="about"
->
-
-    <div class="about-content">
-
-        <h2>
-            À propos de Nostra
-        </h2>
-
-        <p>
-            Nostra est un serveur Roleplay pensé pour créer
-            une expérience immersive et communautaire.
-            Chaque joueur peut développer son personnage,
-            rencontrer d'autres joueurs et construire
-            sa propre histoire dans l'univers du serveur.
-        </p>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     CONTACT
-========================= -->
-
-<section
-    class="about"
-    id="contact"
->
-
-    <div class="about-content">
-
-        <h2>
-            Contact
-        </h2>
-
-        <p>
-            Une question ou un problème ?
-            Les informations de contact de Nostra
-            seront bientôt disponibles ici.
-        </p>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     FOOTER
-========================= -->
 
 <footer>
 
