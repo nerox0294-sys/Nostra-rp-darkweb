@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mon compte - Nostra</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #080808;
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .logo {
+            text-align: center;
+            font-size: 42px;
+            font-weight: 900;
+            letter-spacing: 8px;
+            color: #e50914;
+            margin-bottom: 35px;
+        }
+
+        .card {
+            background: #111;
+            border: 1px solid #242424;
+            border-radius: 14px;
+            padding: 35px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 30px;
+        }
+
+        .profile {
+            background: #080808;
+            border: 1px solid #292929;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        .info {
+            margin-bottom: 20px;
+        }
+
+        .info:last-child {
+            margin-bottom: 0;
+        }
+
+        .label {
+            color: #888;
+            font-size: 13px;
+            margin-bottom: 6px;
+        }
+
+        .value {
+            font-size: 17px;
+            font-weight: bold;
+            word-break: break-word;
+        }
+
+        .logout {
+            width: 100%;
+            padding: 15px;
+            background: #e50914;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .logout:hover {
+            background: #ff1a25;
+        }
+
+        .back {
+            display: block;
+            text-align: center;
+            margin-top: 25px;
+            color: #777;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .back:hover {
+            color: white;
+        }
+
+        #message {
+            text-align: center;
+            color: #ff4d4d;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="logo">
+            NOSTRA
+        </div>
+
+        <div class="card">
+
+            <h1>Mon compte</h1>
+
+            <div id="message"></div>
+
+            <div class="profile">
+
+                <div class="info">
+                    <div class="label">Pseudo</div>
+                    <div class="value" id="username">
+                        Chargement...
+                    </div>
+                </div>
+
+                <div class="info">
+                    <div class="label">Adresse e-mail</div>
+                    <div class="value" id="email">
+                        Chargement...
+                    </div>
+                </div>
+
+            </div>
+
+            <button class="logout" id="logoutButton">
+                SE DÉCONNECTER
+            </button>
+
+            <a href="index.html" class="back">
+                ← Retour à Nostra
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <script type="module">
+
+        import {
+            initializeApp
+        } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+
+        import {
+            getAuth,
+            onAuthStateChanged,
+            signOut
+        } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
+
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDhCfjm-w29Ie1LUxhsMqUfEqB1n7jY6Go",
+            authDomain: "nostra-9cb24.firebaseapp.com",
+            projectId: "nostra-9cb24",
+            storageBucket: "nostra-9cb24.firebasestorage.app",
+            messagingSenderId: "681107105816",
+            appId: "1:681107105816:web:b6a393594780d021e3bb6d",
+            measurementId: "G-7ZPRB7P5PL"
+        };
+
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+
+        const username = document.getElementById("username");
+        const email = document.getElementById("email");
+        const logoutButton = document.getElementById("logoutButton");
+        const message = document.getElementById("message");
+
+
+        onAuthStateChanged(auth, (user) => {
+
+            if (user) {
+
+                username.textContent =
+                    user.displayName || "Sans pseudo";
+
+                email.textContent =
+                    user.email || "Aucune adresse e-mail";
+
+            } else {
+
+                window.location.href = "connexion.html";
+
+            }
+
+        });
+
+
+        logoutButton.addEventListener("click", async () => {
+
+            try {
+
+                await signOut(auth);
+
+                window.location.href = "index.html";
+
+            } catch (error) {
+
+                console.error(error);
+
+                message.textContent =
+                    "Impossible de se déconnecter.";
+
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>
