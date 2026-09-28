@@ -1,393 +1,262 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Mon compte - Nostra</title>
+  <title>Mon compte — Nostra</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
 
-        body {
-            min-height: 100vh;
-            background:
-                radial-gradient(circle at top, #210507 0%, #080808 45%);
-            color: white;
-            font-family: Arial, Helvetica, sans-serif;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
+    body {
+      min-height: 100vh;
+      background: #0b0b0b;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
 
-        .container {
-            width: 100%;
-            max-width: 520px;
-        }
+    .container {
+      width: 100%;
+      max-width: 500px;
+      background: #151515;
+      border: 1px solid #292929;
+      border-radius: 16px;
+      padding: 35px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+      text-align: center;
+    }
 
-        .logo {
-            text-align: center;
-            font-size: 42px;
-            font-weight: 900;
-            letter-spacing: 8px;
-            color: #e50914;
-            margin-bottom: 30px;
-        }
+    .logo {
+      font-size: 30px;
+      font-weight: 900;
+      letter-spacing: 3px;
+      color: #ff2b2b;
+      margin-bottom: 30px;
+    }
 
-        .card {
-            background: rgba(17, 17, 17, 0.96);
-            border: 1px solid #292929;
-            border-radius: 18px;
-            padding: 35px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
-        }
+    .avatar {
+      width: 90px;
+      height: 90px;
+      margin: 0 auto 18px;
+      border-radius: 50%;
+      background: #ff2b2b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      font-weight: bold;
+    }
 
-        .profile-top {
-            text-align: center;
-            margin-bottom: 30px;
-        }
+    h1 {
+      font-size: 25px;
+      margin-bottom: 8px;
+    }
 
-        .avatar {
-            width: 90px;
-            height: 90px;
-            margin: 0 auto 18px;
-            border-radius: 50%;
-            background: #e50914;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 32px;
-            font-weight: 900;
-            box-shadow: 0 0 30px rgba(229, 9, 20, 0.3);
-        }
+    .email {
+      color: #999;
+      margin-bottom: 25px;
+      word-break: break-word;
+    }
 
-        .profile-top h1 {
-            font-size: 28px;
-            margin-bottom: 8px;
-        }
+    .status {
+      display: inline-block;
+      background: #12351d;
+      color: #6cff8b;
+      border: 1px solid #236b34;
+      padding: 8px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      margin-bottom: 25px;
+    }
 
-        .status {
-            display: inline-block;
-            color: #35d06f;
-            font-size: 13px;
-            font-weight: bold;
-        }
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
 
-        .status::before {
-            content: "";
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            background: #35d06f;
-            border-radius: 50%;
-            margin-right: 7px;
-        }
+    button,
+    .button {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+      display: block;
+    }
 
-        .info-box {
-            background: #090909;
-            border: 1px solid #242424;
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 25px;
-        }
+    .profile-button {
+      background: #ff2b2b;
+      color: white;
+    }
 
-        .info {
-            padding: 14px 0;
-            border-bottom: 1px solid #222;
-        }
+    .profile-button:hover {
+      background: #e52222;
+    }
 
-        .info:first-child {
-            padding-top: 0;
-        }
+    .logout-button {
+      background: #292929;
+      color: white;
+    }
 
-        .info:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-        }
+    .logout-button:hover {
+      background: #3a3a3a;
+    }
 
-        .label {
-            color: #777;
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 7px;
-        }
+    .home-button {
+      background: transparent;
+      color: #888;
+      border: 1px solid #292929;
+    }
 
-        .value {
-            font-size: 16px;
-            font-weight: bold;
-            word-break: break-word;
-        }
-
-        .buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        button,
-        .home-button {
-            width: 100%;
-            padding: 14px;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: bold;
-            text-align: center;
-            cursor: pointer;
-            text-decoration: none;
-        }
-
-        .logout {
-            background: #e50914;
-            border: 1px solid #e50914;
-            color: white;
-        }
-
-        .logout:hover {
-            background: #ff1a25;
-            border-color: #ff1a25;
-        }
-
-        .home-button {
-            background: transparent;
-            border: 1px solid #333;
-            color: white;
-        }
-
-        .home-button:hover {
-            border-color: #e50914;
-        }
-
-        #message {
-            text-align: center;
-            color: #ff4d4d;
-            font-size: 14px;
-            margin-bottom: 15px;
-        }
-
-        @media (max-width: 500px) {
-            .card {
-                padding: 25px;
-            }
-
-            .logo {
-                font-size: 34px;
-            }
-        }
-    </style>
+    .home-button:hover {
+      color: white;
+      border-color: #444;
+    }
+  </style>
 </head>
 
 <body>
 
-    <div class="container">
+  <div class="container">
 
-        <div class="logo">
-            NOSTRA
-        </div>
+    <div class="logo">NOSTRA</div>
 
-        <div class="card">
+    <div class="avatar" id="avatar">
+      ?
+    </div>
 
-            <div class="profile-top">
+    <h1 id="username">
+      Chargement...
+    </h1>
 
-                <div class="avatar" id="avatar">
-                    ?
-                </div>
+    <div class="email" id="email">
+      Chargement...
+    </div>
 
-                <h1 id="username">
-                    Chargement...
-                </h1>
+    <div class="status">
+      ● Connecté
+    </div>
 
-                <div class="status">
-                    Connecté
-                </div>
+    <div class="buttons">
 
-            </div>
+      <a
+        id="profileLink"
+        class="button profile-button"
+        href="#"
+      >
+        VOIR MON PROFIL PUBLIC
+      </a>
 
+      <button
+        id="logoutButton"
+        class="logout-button"
+      >
+        SE DÉCONNECTER
+      </button>
 
-            <div id="message"></div>
-
-
-            <div class="info-box">
-
-                <div class="info">
-
-                    <div class="label">
-                        Pseudo
-                    </div>
-
-                    <div class="value" id="usernameInfo">
-                        Chargement...
-                    </div>
-
-                </div>
-
-
-                <div class="info">
-
-                    <div class="label">
-                        Adresse e-mail
-                    </div>
-
-                    <div class="value" id="email">
-                        Chargement...
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="buttons">
-
-                <button
-                    class="logout"
-                    id="logoutButton"
-                >
-                    SE DÉCONNECTER
-                </button>
-
-                <a
-                    href="index.html"
-                    class="home-button"
-                >
-                    ← RETOUR À L'ACCUEIL
-                </a>
-
-            </div>
-
-        </div>
+      <a
+        href="index.html"
+        class="button home-button"
+      >
+        ← RETOUR À L'ACCUEIL
+      </a>
 
     </div>
 
-
-    <script type="module">
-
-        import {
-            initializeApp
-        } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
-
-        import {
-            getAuth,
-            onAuthStateChanged,
-            signOut
-        } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
+  </div>
 
 
-        const firebaseConfig = {
+  <script type="module">
 
-            apiKey: "AIzaSyDhCfjm-w29Ie1LUxhsMqUfEqB1n7jY6Go",
+    import {
+      initializeApp
+    } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
 
-            authDomain: "nostra-9cb24.firebaseapp.com",
-
-            projectId: "nostra-9cb24",
-
-            storageBucket: "nostra-9cb24.firebasestorage.app",
-
-            messagingSenderId: "681107105816",
-
-            appId: "1:681107105816:web:b6a393594780d021e3bb6d",
-
-            measurementId: "G-7ZPRB7P5PL"
-
-        };
+    import {
+      getAuth,
+      onAuthStateChanged,
+      signOut
+    } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
 
 
-        const app = initializeApp(firebaseConfig);
-
-        const auth = getAuth(app);
-
-
-        const avatar =
-            document.getElementById("avatar");
-
-        const username =
-            document.getElementById("username");
-
-        const usernameInfo =
-            document.getElementById("usernameInfo");
-
-        const email =
-            document.getElementById("email");
-
-        const logoutButton =
-            document.getElementById("logoutButton");
-
-        const message =
-            document.getElementById("message");
+    const firebaseConfig = {
+      apiKey: "AIzaSyDhCfjm-w29Ie1LUxhsMqUfEqBn1n7jY6Go",
+      authDomain: "nostra-9cb24.firebaseapp.com",
+      projectId: "nostra-9cb24",
+      storageBucket: "nostra-9cb24.firebasestorage.app",
+      messagingSenderId: "681107105816",
+      appId: "1:681107105816:web:b6a393594780d021e3bb6d",
+      measurementId: "G-7ZPRB7P5PL"
+    };
 
 
-        onAuthStateChanged(auth, (user) => {
-
-            if (!user) {
-
-                window.location.href =
-                    "connexion.html";
-
-                return;
-            }
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
 
 
-            const pseudo =
-                user.displayName || "Joueur";
+    const avatar = document.getElementById("avatar");
+    const username = document.getElementById("username");
+    const email = document.getElementById("email");
+    const profileLink = document.getElementById("profileLink");
+    const logoutButton = document.getElementById("logoutButton");
 
 
-            username.textContent =
-                pseudo;
+    onAuthStateChanged(auth, (user) => {
+
+      if (!user) {
+        window.location.href = "connexion.html";
+        return;
+      }
 
 
-            usernameInfo.textContent =
-                pseudo;
+      const pseudo = user.displayName || "Membre Nostra";
+
+      username.textContent = pseudo;
+      email.textContent = user.email || "";
+
+      avatar.textContent =
+        pseudo.charAt(0).toUpperCase();
 
 
-            email.textContent =
-                user.email || "Aucune adresse e-mail";
+      // Lien vers le profil public
+      profileLink.href =
+        `profil.html?uid=${encodeURIComponent(user.uid)}`;
+
+    });
 
 
-            // Première lettre du pseudo
+    logoutButton.addEventListener("click", async () => {
 
-            avatar.textContent =
-                pseudo.charAt(0).toUpperCase();
+      try {
 
-        });
+        await signOut(auth);
 
+        window.location.href = "index.html";
 
-        logoutButton.addEventListener("click", async () => {
+      } catch (error) {
 
-            logoutButton.disabled = true;
+        console.error(error);
 
-            logoutButton.textContent =
-                "DÉCONNEXION...";
+        alert("Impossible de se déconnecter. Réessaie.");
 
+      }
 
-            try {
+    });
 
-                await signOut(auth);
-
-                window.location.href =
-                    "index.html";
-
-            } catch (error) {
-
-                console.error(error);
-
-                message.textContent =
-                    "Impossible de se déconnecter.";
-
-                logoutButton.disabled = false;
-
-                logoutButton.textContent =
-                    "SE DÉCONNECTER";
-
-            }
-
-        });
-
-    </script>
+  </script>
 
 </body>
 </html>
